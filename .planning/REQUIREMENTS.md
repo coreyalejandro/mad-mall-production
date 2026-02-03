@@ -92,8 +92,8 @@ Deferred to future milestones. See `ANTHROPIC_INTEGRATION_USE_CASES.md` and `PHA
 **Coverage:**
 - v1 requirements: 12 total
 - Mapped to phases: 12
-- Unmapped: 0 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-03*
-*Last updated: 2026-02-03 after initial definition*
+*Last updated: 2026-02-03 after roadmap creation*
