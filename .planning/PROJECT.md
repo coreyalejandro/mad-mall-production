@@ -41,10 +41,20 @@ Current milestone: Fix + Rebrand
 - [ ] Feature notebook highlights on initial display (especially the mock data conversation)
 - [ ] Ensure smooth pan/zoom across all posters, not stuck on one corner
 
+### Roadmap (Post-Rebrand)
+
+After Fix + Rebrand milestone, the build order is:
+
+1. **Sisterhood Lounge** — Real-time chat (WebSocket/Pusher), the heart of community
+2. **AIme Concierge** — Claude Healthcare integration, personal health navigator
+3. **Endocrine Clinic/Service Directory** — Booking with Stripe, appointment scheduling
+4. **Full Claude Healthcare Stack** — Symptom-to-Sisterhood matching, Insurance Advocate, Living Protocols
+
+Detailed specs in `ANTHROPIC_INTEGRATION_USE_CASES.md` and `PHASE3_*.md`.
+
 ### Out of Scope
 
 - Full spatial navigation rebuild (Google Earth style) — north star vision, future milestone
-- Phase 3 features (Sisterhood Lounge chat, Events, Service Booking, Profiles, Moderation) — planned per PHASE3 docs, not this milestone
 - Real medical data or PHI collection — building governance architecture first
 - Mobile app — web-first
 - OAuth login options — email/password sufficient for construction phase
