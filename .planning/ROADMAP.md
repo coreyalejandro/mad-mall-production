@@ -28,10 +28,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can pan smoothly across the entire canvas without getting stuck in one corner
   3. User can click a reset button and see all posters centered in their viewport
   4. Zoom and pan work consistently across different poster positions on the canvas
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md -- Fix cursor-centered zoom, dynamic resetView, and verify navigation feel
 
 ### Phase 2: Branding
 **Goal**: All visible branding reflects MADMall identity with construction-themed aesthetics; no trace of next-forge or Vercel triangles remains.
@@ -81,7 +81,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Navigation | 0/TBD | Not started | - |
+| 1. Navigation | 0/1 | Planned | - |
 | 2. Branding | 0/TBD | Not started | - |
 | 3. Header | 0/TBD | Not started | - |
 | 4. Home Display | 0/TBD | Not started | - |
