@@ -26,6 +26,23 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
+function getBounds(boards: PlanBoard[]) {
+  if (boards.length === 0) {
+    return { minX: 0, minY: 0, maxX: 0, maxY: 0 };
+  }
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  for (const b of boards) {
+    minX = Math.min(minX, b.x);
+    minY = Math.min(minY, b.y);
+    maxX = Math.max(maxX, b.x + b.w);
+    maxY = Math.max(maxY, b.y + b.h);
+  }
+  return { minX, minY, maxX, maxY };
+}
+
 export function getToneClass(tone: BoardTone | undefined): string {
   if (tone === "caution") {
     return "madmall-caution";
@@ -84,6 +101,7 @@ export function usePlanPage() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [listView, setListView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const panStart = useRef<{
     x: number;
     y: number;
@@ -169,12 +187,40 @@ export function usePlanPage() {
   }
 
   function resetView() {
-    setOffset({ x: -200, y: -150 });
-    setScale(1);
+    if (boards.length === 0) {
+      setOffset({ x: 0, y: 0 });
+      setScale(1);
+      return;
+    }
+
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) {
+      setOffset({ x: 0, y: 0 });
+      setScale(1);
+      return;
+    }
+
+    const { minX, minY, maxX, maxY } = getBounds(boards);
+    const contentWidth = maxX - minX;
+    const contentHeight = maxY - minY;
+
+    // 40px padding on each side
+    const padding = 80;
+    const scaleX = (rect.width - padding) / contentWidth;
+    const scaleY = (rect.height - padding) / contentHeight;
+    const fitScale = Math.min(scaleX, scaleY, 1);
+
+    // Center the content
+    const x = rect.width / 2 - (minX + contentWidth / 2) * fitScale;
+    const y = rect.height / 2 - (minY + contentHeight / 2) * fitScale;
+
+    setOffset({ x, y });
+    setScale(fitScale);
   }
 
   return {
     boards,
+    containerRef,
     error,
     listView,
     offset,
