@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-03)
 ## Current Position
 
 Phase: 1 of 4 (Navigation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-03 — Roadmap created
+Plan: 1 of TBD in current phase
+Status: In progress
+Last activity: 2026-02-06 — Completed 01-01-PLAN.md (Canvas Navigation Fix)
 
-Progress: [----------] 0%
+Progress: [█---------] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 20 min
+- Total execution time: 0.33 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-navigation | 1 | 20 min | 20 min |
 
 **Recent Trend:**
-- Last 5 plans: -
-- Trend: Not yet established
+- Last 5 plans: 01-01 (20 min)
+- Trend: Just started
 
 *Updated after each plan completion*
 
@@ -42,7 +42,11 @@ Progress: [----------] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- None yet (project just initialized)
+| Date | Phase | Decision | Rationale |
+|------|-------|----------|-----------|
+| 2026-02-06 | 01-01 | Use getBoundingClientRect() for cursor position | offsetX/Y are relative to event target; getBoundingClientRect() gives consistent viewport coordinates |
+| 2026-02-06 | 01-01 | Clamp scale before offset calculation | Prevents drift during rapid zoom (RESEARCH.md Pitfall 3) |
+| 2026-02-06 | 01-01 | Cap Reset View fitScale at 1x | Prevents unwanted magnification when content is small |
 
 ### Pending Todos
 
@@ -54,6 +58,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-03
-Stopped at: Roadmap created, ready for Phase 1 planning
+Last session: 2026-02-06
+Stopped at: Completed 01-01-PLAN.md (Canvas Navigation Fix)
 Resume file: None
