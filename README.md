@@ -1,6 +1,39 @@
-# ▲ / next-forge
+# MADMall
 
-**Production-grade Turborepo template for Next.js apps.**
+**A virtual luxury outdoor mall + teaching clinic for Black women with Graves' disease.**
+
+Built on [next-forge](https://github.com/vercel/next-forge), a production-grade Turborepo template for Next.js apps.
+
+## Quick Start
+
+From the root of `/mad-mall-production`:
+
+```sh
+pnpm dev
+```
+
+### Dev Server URLs
+
+| App | URL |
+|-----|-----|
+| **Web** | http://localhost:3001 |
+| **App** | http://localhost:3000 |
+| **API** | http://localhost:3002 |
+| **Email** | http://localhost:3003 |
+| **Docs** | http://localhost:3004 |
+| **Storybook** | http://localhost:6006 |
+
+### MADMall Sections
+
+Access the mall interface at http://localhost:3001 (scroll past hero):
+
+| Section | URL | Description |
+|---------|-----|-------------|
+| **Plan** | http://localhost:3001/plan | Interactive infinite canvas with blueprints |
+| **ML Training** | http://localhost:3001/ml | Data collection + training pipeline |
+| **Agents** | http://localhost:3001/agents | IBM agent curriculum artifacts |
+
+---
 
 <div>
   <img src="https://img.shields.io/npm/dy/next-forge" alt="" />
@@ -8,7 +41,7 @@
   <img src="https://img.shields.io/github/license/vercel/next-forge" alt="" />
 </div>
 
-## Overview
+## Overview (next-forge)
 
 [next-forge](https://github.com/vercel/next-forge) is a production-grade [Turborepo](https://turborepo.com) template for [Next.js](https://nextjs.org/) apps. It's designed to be a comprehensive starting point for building SaaS applications, providing a solid, opinionated foundation with minimal configuration required.
 

@@ -277,3 +277,6 @@ packages/database/generated
 .contentlayer
 .content-collections
 .source
+
+# OpenMemory - IDE/Assistant specific rules
+.cursor/rules/openmemory.mdc

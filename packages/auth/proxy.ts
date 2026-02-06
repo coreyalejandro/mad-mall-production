@@ -1,1 +1,5 @@
-export { clerkMiddleware as authMiddleware } from "@clerk/nextjs/server";
+export const authMiddleware = (callback: any) => {
+  return async (request: any, event: any) => {
+    return callback({}, request, event);
+  };
+};

@@ -7,6 +7,7 @@ import { CTA } from "./components/cta";
 import { FAQ } from "./components/faq";
 import { Features } from "./components/features";
 import { Hero } from "./components/hero";
+import { MadmallEntry } from "./components/madmall-entry";
 import { Stats } from "./components/stats";
 import { Testimonials } from "./components/testimonials";
 
@@ -32,12 +33,13 @@ const Home = async ({ params }: HomeProps) => {
 
   return (
     <>
-      {betaFeature && (
+      {betaFeature ? (
         <div className="w-full bg-black py-2 text-center text-white">
           Beta feature now available
         </div>
-      )}
+      ) : null}
       <Hero dictionary={dictionary} />
+      <MadmallEntry />
       <Cases dictionary={dictionary} />
       <Features dictionary={dictionary} />
       <Stats dictionary={dictionary} />

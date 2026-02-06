@@ -1,0 +1,72 @@
+{
+  "schema": "madmall.plan.boards.v1",
+  "canvas": { "initial": { "x": -200, "y": -150, "scale": 1 } },
+  "boards": [
+    {
+      "id": "vision",
+      "title": "MADMall Vision",
+      "subtitle": "Luxury outdoor mall + teaching clinic",
+      "doc": "plan/01-vision.md",
+      "x": 0,
+      "y": 0,
+      "w": 520,
+      "h": 340,
+      "tone": "caution"
+    },
+    {
+      "id": "byte-data",
+      "title": "Byte-Size Data Collection",
+      "subtitle": "Low-friction, year-round micro-events",
+      "doc": "plan/02-byte-size-data.md",
+      "x": 580,
+      "y": 0,
+      "w": 520,
+      "h": 340,
+      "tone": "grid"
+    },
+    {
+      "id": "distributed-network",
+      "title": "Distributed Collection Network",
+      "subtitle": "Pharmacies, events, mail kits, mobile units",
+      "doc": "plan/03-distributed-network.md",
+      "x": 1160,
+      "y": 0,
+      "w": 520,
+      "h": 340,
+      "tone": "grid"
+    },
+    {
+      "id": "ml-training",
+      "title": "ML Training Component",
+      "subtitle": "Ingestion → labeling → training → monitoring",
+      "doc": "plan/04-ml-training.md",
+      "x": 0,
+      "y": 390,
+      "w": 520,
+      "h": 360,
+      "tone": "grid"
+    },
+    {
+      "id": "agent-pipeline",
+      "title": "IBM Agent Internship Pipeline",
+      "subtitle": "Assessment → placement → supervision",
+      "doc": "plan/05-agent-pipeline.md",
+      "x": 580,
+      "y": 390,
+      "w": 520,
+      "h": 360,
+      "tone": "caution"
+    },
+    {
+      "id": "governance",
+      "title": "Safety + Governance",
+      "subtitle": "Consent, audit, fail-closed",
+      "doc": "plan/06-governance.md",
+      "x": 1160,
+      "y": 390,
+      "w": 520,
+      "h": 360,
+      "tone": "grid"
+    }
+  ]
+}

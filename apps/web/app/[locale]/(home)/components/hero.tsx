@@ -20,9 +20,13 @@ export const Hero = async ({ dictionary }: HeroProps) => (
             {async ([data]) => {
               "use server";
 
+              if (!data?.blog?.posts?.item) {
+                return null;
+              }
+
               return (
                 <Button asChild className="gap-4" size="sm" variant="secondary">
-                  <Link href={`/blog/${data.blog.posts.item?._slug}`}>
+                  <Link href={`/blog/${data.blog.posts.item._slug}`}>
                     {dictionary.web.home.hero.announcement}{" "}
                     <MoveRight className="h-4 w-4" />
                   </Link>
