@@ -37,9 +37,11 @@ Before implementing Phase 3 features, ensure:
 ## 1. Real-time Sisterhood Lounge
 
 ### Objective
+
 Build a real-time chat system for the Sisterhood Lounge with WebSocket support, typing indicators, and message history.
 
 ### Technology Stack
+
 - **WebSocket**: Socket.io or Pusher (recommendation: Pusher for production reliability)
 - **Database**: Prisma with PostgreSQL
 - **Components**: Enhanced design system components
@@ -111,6 +113,7 @@ model Reaction {
 ```
 
 **Migration Command**:
+
 ```bash
 cd packages/database
 pnpm prisma migrate dev --name add_chat_system
@@ -126,6 +129,7 @@ mkdir -p packages/realtime/src
 ```
 
 **packages/realtime/package.json**:
+
 ```json
 {
   "name": "@repo/realtime",
@@ -154,6 +158,7 @@ mkdir -p packages/realtime/src
 ```
 
 **packages/realtime/src/server.ts**:
+
 ```typescript
 import Pusher from 'pusher';
 
@@ -200,6 +205,7 @@ export { pusher };
 ```
 
 **packages/realtime/src/client.ts**:
+
 ```typescript
 'use client';
 
@@ -259,6 +265,7 @@ export const useChatRoom = (roomId: string) => {
 #### 1.3 API Routes for Chat
 
 **apps/api/app/api/chat/rooms/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -309,6 +316,7 @@ export async function POST(request: Request) {
 ```
 
 **apps/api/app/api/chat/[roomId]/messages/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -382,6 +390,7 @@ export async function POST(
 #### 1.4 Chat UI Component
 
 **apps/app/components/chat/ChatRoom.tsx**:
+
 ```tsx
 'use client';
 
@@ -493,9 +502,11 @@ export const ChatRoom = ({ roomId, roomName }: ChatRoomProps) => {
 ## 2. Live Experiences Event Scheduling
 
 ### Objective
+
 Create an event scheduling system for Live Experiences (concerts, workshops, etc.) with calendar integration and RSVP functionality.
 
 ### Technology Stack
+
 - **Calendar**: React Big Calendar or FullCalendar
 - **Database**: Prisma
 - **Notifications**: @repo/notifications package
@@ -548,6 +559,7 @@ model EventAttendee {
 #### 2.2 Event Management API
 
 **apps/api/app/api/events/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -604,6 +616,7 @@ export async function POST(request: Request) {
 ```
 
 **apps/api/app/api/events/[eventId]/rsvp/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -659,6 +672,7 @@ export async function POST(
 #### 2.3 Event Calendar Component
 
 **apps/app/components/events/EventCalendar.tsx**:
+
 ```tsx
 'use client';
 
@@ -739,9 +753,11 @@ export const EventCalendar = () => {
 ## 3. Service Directory with Booking
 
 ### Objective
+
 Build a comprehensive service directory with integrated booking system for appointments and services.
 
 ### Technology Stack
+
 - **Booking**: Custom booking engine with conflict detection
 - **Payments**: @repo/payments (Stripe)
 - **Calendar**: iCal integration for calendar exports
@@ -832,6 +848,7 @@ model Booking {
 #### 3.2 Booking API with Conflict Detection
 
 **apps/api/app/api/bookings/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -920,6 +937,7 @@ export async function POST(request: Request) {
 #### 3.3 Service Directory UI
 
 **apps/app/components/services/ServiceDirectory.tsx**:
+
 ```tsx
 'use client';
 
@@ -984,6 +1002,7 @@ export const ServiceDirectory = () => {
 ## 4. User Profiles and Avatars
 
 ### Objective
+
 Implement comprehensive user profiles with customizable avatars, preferences, and activity tracking.
 
 ### Implementation Steps
@@ -1032,6 +1051,7 @@ model UserActivity {
 #### 4.2 Avatar Upload with Storage
 
 **apps/api/app/api/profile/avatar/route.ts**:
+
 ```typescript
 import { auth } from '@repo/auth/server';
 import { database } from '@repo/database';
@@ -1071,6 +1091,7 @@ export async function POST(request: Request) {
 #### 4.3 Profile Component
 
 **apps/app/components/profile/UserProfile.tsx**:
+
 ```tsx
 'use client';
 
@@ -1172,9 +1193,11 @@ export const UserProfile = ({ userId }: { userId: string }) => {
 ## 5. Content Moderation
 
 ### Objective
+
 Implement automated and manual content moderation for chat messages, user profiles, and community content.
 
 ### Technology Stack
+
 - **AI Moderation**: OpenAI Moderation API or Perspective API
 - **Manual Review**: Admin dashboard with flagging system
 - **Rate Limiting**: @repo/rate-limit package
@@ -1228,6 +1251,7 @@ model ModerationScore {
 #### 5.2 Moderation Middleware
 
 **packages/moderation/src/index.ts**:
+
 ```typescript
 import OpenAI from 'openai';
 
@@ -1265,6 +1289,7 @@ export const shouldBlockContent = (moderationResult: any): boolean => {
 #### 5.3 Moderation Integration in Chat
 
 **apps/api/app/api/chat/[roomId]/messages/route.ts** (updated):
+
 ```typescript
 import { moderateContent, shouldBlockContent } from '@repo/moderation';
 import { database } from '@repo/database';
@@ -1346,6 +1371,7 @@ export async function POST(
 #### 5.4 Admin Moderation Dashboard
 
 **apps/app/components/admin/ModerationDashboard.tsx**:
+
 ```tsx
 'use client';
 
@@ -1446,6 +1472,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 ## Testing Checklist
 
 ### Real-time Chat
+
 - [ ] Users can send and receive messages in real-time
 - [ ] Typing indicators work correctly
 - [ ] Online status updates properly
@@ -1453,6 +1480,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 - [ ] Emoji reactions work
 
 ### Event Scheduling
+
 - [ ] Events display on calendar
 - [ ] RSVP functionality works
 - [ ] Email confirmations are sent
@@ -1460,6 +1488,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 - [ ] Calendar exports work
 
 ### Service Booking
+
 - [ ] Services display by category
 - [ ] Booking conflict detection works
 - [ ] Payment processing succeeds
@@ -1467,12 +1496,14 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 - [ ] Calendar invites are generated
 
 ### User Profiles
+
 - [ ] Avatar upload works
 - [ ] Profile edits save correctly
 - [ ] Privacy settings are respected
 - [ ] Activity tracking works
 
 ### Content Moderation
+
 - [ ] AI moderation blocks inappropriate content
 - [ ] Manual flagging works
 - [ ] Admin dashboard displays flags
@@ -1494,9 +1525,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_publishable_key
 ## Support & Resources
 
 - **Design System Docs**: See `COMPONENT_INVENTORY.md`
-- **next-forge Docs**: https://www.next-forge.com/docs
-- **Pusher Docs**: https://pusher.com/docs
-- **Stripe Docs**: https://stripe.com/docs
+- **next-forge Docs**: <https://www.next-forge.com/docs>
+- **Pusher Docs**: <https://pusher.com/docs>
+- **Stripe Docs**: <https://stripe.com/docs>
 
 ---
 
