@@ -70,13 +70,19 @@ Each feature slice must declare:
 | 4 | User Profiles and Avatars | PII handling, image storage, consent | Low-Medium |
 | 5 | Content Moderation | AI governance, cultural sensitivity, false-positive harm | Medium |
 
-## Identity Migration (In Progress)
+## Identity Migration (Complete)
 
-The repo is migrating from next-forge scaffold identity to MADMall product identity:
-- [ ] package.json: `"name": "next-forge"` → `"name": "mad-mall-production"`
-- [ ] Remove template-specific features that don't map to MADMall
-- [ ] Replace template README content with product narrative
-- [ ] Ensure all branding references are MADMall, not next-forge
+The repo has been migrated from next-forge scaffold identity to MADMall product identity:
+- [x] package.json: `"name": "next-forge"` → `"name": "mad-mall-production"`
+- [x] SEO metadata: application name, author, publisher → MADMall / Corey Alejandro
+- [x] Header: Vercel triangle + "next-forge" → CommandIcon + "MADMall"
+- [x] Footer: "next-forge" → "MADMall" with product description
+- [x] README: full product narrative replacing template content
+- [x] Rate-limit prefix: "next-forge" → "mad-mall"
+- [x] All script references updated
+- [x] Issue templates updated
+- [ ] Remove template-specific features that don't map to MADMall (Phase 2)
+- [ ] Replace remaining Vercel branding in visual assets (Phase 2)
 
 ## Tasks Structure
 

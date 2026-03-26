@@ -1,172 +1,133 @@
 # MADMall
 
-**A virtual luxury outdoor mall + teaching clinic for Black women with Graves' disease.**
+**A virtual luxury outdoor mall and teaching clinic for Black women living with Graves' disease.**
 
-Built on [next-forge](https://github.com/vercel/next-forge), a production-grade Turborepo template for Next.js apps.
+Governed by [The Living Constitution](https://github.com/coreyalejandro/the-living-constitution) — constitutional governance applied to a real healthcare product serving a real, underserved population.
+
+---
+
+## What MADMall Is
+
+MADMall is a community wellness platform — **non-clinical by constitutional constraint**. It does not diagnose, treat, or prescribe. It provides:
+
+- **Community** — Sisterhood Lounge (real-time chat with culturally safe moderation)
+- **Events** — Live Experiences (event scheduling and RSVP)
+- **Services** — Service Directory (booking + payments for wellness providers)
+- **Identity** — User Profiles and Avatars
+- **Safety** — AI-governed content moderation that respects AAVE and culturally resonant communication
+
+## Why It Exists
+
+Black women are disproportionately affected by Graves' disease. The systems that should protect them were not designed for them. MADMall is safety work on its own terms — a governed product where every feature traces to a mission goal: **reducing isolation for Black women with Graves' disease.**
+
+---
 
 ## Quick Start
 
-From the root of `/mad-mall-production`:
-
 ```sh
+pnpm install
 pnpm dev
 ```
 
 ### Dev Server URLs
 
-| App | URL |
-|-----|-----|
-| **Web** | http://localhost:3001 |
-| **App** | http://localhost:3000 |
-| **API** | http://localhost:3002 |
-| **Email** | http://localhost:3003 |
-| **Docs** | http://localhost:3004 |
-| **Storybook** | http://localhost:6006 |
+| App | URL | Purpose |
+|-----|-----|---------|
+| **Web** | http://localhost:3001 | Marketing + mall interface |
+| **App** | http://localhost:3000 | Main application (auth, profiles) |
+| **API** | http://localhost:3002 | RESTful API |
+| **Email** | http://localhost:3003 | Email templates |
+| **Docs** | http://localhost:3004 | Documentation |
+| **Storybook** | http://localhost:6006 | Component library |
 
 ### MADMall Sections
-
-Access the mall interface at http://localhost:3001 (scroll past hero):
 
 | Section | URL | Description |
 |---------|-----|-------------|
 | **Plan** | http://localhost:3001/plan | Interactive infinite canvas with blueprints |
 | **ML Training** | http://localhost:3001/ml | Data collection + training pipeline |
-| **Agents** | http://localhost:3001/agents | IBM agent curriculum artifacts |
+| **Agents** | http://localhost:3001/agents | Agent curriculum artifacts |
 
 ---
 
-<div>
-  <img src="https://img.shields.io/npm/dy/next-forge" alt="" />
-  <img src="https://img.shields.io/npm/v/next-forge" alt="" />
-  <img src="https://img.shields.io/github/license/vercel/next-forge" alt="" />
-</div>
+## Governance
 
-## Overview (next-forge)
+MADMall operates under The Living Constitution (TLC). All five Articles apply:
 
-[next-forge](https://github.com/vercel/next-forge) is a production-grade [Turborepo](https://turborepo.com) template for [Next.js](https://nextjs.org/) apps. It's designed to be a comprehensive starting point for building SaaS applications, providing a solid, opinionated foundation with minimal configuration required.
+| Article | Application |
+|---------|-------------|
+| **I — Bill of Rights** | Safety, accessibility, dignity, clarity, truth in every interaction |
+| **II — Execution Law** | Immutable data, truth-status discipline, security enforcement |
+| **III — Purpose Law** | Every feature maps to the mission. No feature ships without purpose evidence |
+| **IV — Separation of Powers** | Agent roles are bounded. No agent deploys without human approval |
+| **V — Amendment Process** | Failures become lessons, lessons become amendments |
 
-Built on a decade of experience building web applications, next-forge balances speed and quality to help you ship thoroughly-built products faster.
+### External Standards Alignment
 
-### Philosophy
+| Standard | Application |
+|----------|-------------|
+| **NIST SSDF** (SP 800-218) | Secure SDLC practices as auditable artifacts |
+| **NIST AI RMF** (AI 100-1) | AI governance for moderation, recommendations, content |
+| **OpenSSF Scorecard** | Supply-chain security: branch protection, dependency hygiene |
 
-next-forge is built around five core principles:
+---
 
-- **Fast** — Quick to build, run, deploy, and iterate on
-- **Cheap** — Free to start with services that scale with you
-- **Opinionated** — Integrated tooling designed to work together
-- **Modern** — Latest stable features with healthy community support
-- **Safe** — End-to-end type safety and robust security posture
+## Architecture
 
-## Demo
-
-Experience next-forge in action:
-
-- [Web](https://demo.next-forge.com) — Marketing website
-- [App](https://app.demo.next-forge.com) — Main application
-- [Storybook](https://storybook.demo.next-forge.com) — Component library
-- [API](https://api.demo.next-forge.com/health) — API health check
-
-## Features
-
-next-forge comes with batteries included:
-
-### Apps
-
-- **Web** — Marketing site built with Tailwind CSS and TWBlocks
-- **App** — Main application with authentication and database integration
-- **API** — RESTful API with health checks and monitoring
-- **Docs** — Documentation site powered by Mintlify
-- **Email** — Email templates with React Email
-- **Storybook** — Component development environment
-
-### Packages
-
-- **Authentication** — Powered by [Clerk](https://clerk.com)
-- **Database** — Type-safe ORM with migrations
-- **Design System** — Comprehensive component library with dark mode
-- **Payments** — Subscription management via [Stripe](https://stripe.com)
-- **Email** — Transactional emails via [Resend](https://resend.com)
-- **Analytics** — Web ([Google Analytics](https://developers.google.com/analytics)) and product ([Posthog](https://posthog.com))
-- **Observability** — Error tracking ([Sentry](https://sentry.io)), logging, and uptime monitoring ([BetterStack](https://betterstack.com))
-- **Security** — Application security ([Arcjet](https://arcjet.com)), rate limiting, and secure headers
-- **CMS** — Type-safe content management for blogs and documentation
-- **SEO** — Metadata management, sitemaps, and JSON-LD
-- **AI** — AI integration utilities
-- **Webhooks** — Inbound and outbound webhook handling
-- **Collaboration** — Real-time features with avatars and live cursors
-- **Feature Flags** — Feature flag management
-- **Cron** — Scheduled job management
-- **Storage** — File upload and management
-- **Internationalization** — Multi-language support
-- **Notifications** — In-app notification system
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 20+
-- [pnpm](https://pnpm.io) (or npm/yarn/bun)
-- [Stripe CLI](https://docs.stripe.com/stripe-cli) for local webhook testing
-
-### Installation
-
-Create a new next-forge project:
-
-```sh
-npx next-forge@latest init
-```
-
-### Setup
-
-1. Configure your environment variables
-2. Set up required service accounts (Clerk, Stripe, Resend, etc.)
-3. Run the development server
-
-For detailed setup instructions, read the [documentation](https://www.next-forge.com/docs).
-
-## Structure
-
-next-forge uses a monorepo structure managed by Turborepo:
+MADMall is a Turborepo monorepo with 7 apps and 20 shared packages:
 
 ```
-next-forge/
-├── apps/           # Deployable applications
-│   ├── web/        # Marketing website (port 3001)
+mad-mall-production/
+├── apps/
+│   ├── web/        # Marketing + mall (port 3001)
 │   ├── app/        # Main application (port 3000)
-│   ├── api/        # API server
-│   ├── docs/       # Documentation
-│   ├── email/      # Email templates
-│   └── storybook/  # Component library
-└── packages/       # Shared packages
-    ├── design-system/
-    ├── database/
-    ├── auth/
-    └── ...
+│   ├── api/        # API server (port 3002)
+│   ├── docs/       # Documentation (port 3004)
+│   ├── email/      # Email templates (port 3003)
+│   ├── storybook/  # Component library (port 6006)
+│   └── studio/     # CMS studio
+├── packages/
+│   ├── ai/                  # AI integration
+│   ├── analytics/           # Web + product analytics
+│   ├── auth/                # Authentication (Clerk)
+│   ├── cms/                 # Content management
+│   ├── collaboration/       # Real-time features
+│   ├── database/            # Prisma ORM + PostgreSQL
+│   ├── design-system/       # Component library
+│   ├── email/               # Transactional emails (Resend)
+│   ├── feature-flags/       # Feature flag management
+│   ├── internationalization/# Multi-language support
+│   ├── next-config/         # Shared Next.js config
+│   ├── notifications/       # In-app notifications
+│   ├── observability/       # Error tracking (Sentry)
+│   ├── payments/            # Stripe integration
+│   ├── rate-limit/          # Rate limiting (Upstash)
+│   ├── security/            # Security headers (Arcjet)
+│   ├── seo/                 # Metadata + sitemaps
+│   ├── storage/             # File uploads
+│   ├── typescript-config/   # Shared TS config
+│   └── webhooks/            # Webhook handling
+└── tasks/
+    ├── todo.md              # Sprint tracker
+    ├── lessons.md           # Amendment log (Article V)
+    └── pause-state.md       # SOP-013 recovery state
 ```
 
-Each app is self-contained and independently deployable. Packages are shared across apps for consistency and maintainability.
+---
 
-## Documentation
+## Source Evidence
 
-Full documentation is available at [next-forge.com/docs](https://www.next-forge.com/docs), including:
+| Repository | Contains |
+|-----------|----------|
+| [the-living-constitution](https://github.com/coreyalejandro/the-living-constitution) | Governance specification, all five Articles, build contracts |
+| [kiro-hackathon-mad-mall](https://github.com/coreyalejandro/kiro-hackathon-mad-mall) | Feature modules, information architecture, UI references |
+| [black-women-and-graves-disease](https://github.com/coreyalejandro/black-women-and-graves-disease) | Research report, Phase 3 specs, clinical literature grounding |
 
-- Detailed setup guides
-- Package documentation
-- Migration guides for swapping providers
-- Deployment instructions
-- Examples and recipes
+---
 
-## Contributing
+## Foundation
 
-We welcome contributions! See the [contributing guide](https://github.com/vercel/next-forge/blob/main/.github/CONTRIBUTING.md) for details.
-
-## Contributors
-
-<a href="https://github.com/vercel/next-forge/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=vercel/next-forge" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
+Built on [next-forge](https://github.com/vercel/next-forge) by Vercel — a production-grade Turborepo template for Next.js. The scaffold provides the delivery chassis; The Living Constitution provides the governance.
 
 ## License
 

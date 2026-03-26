@@ -4,11 +4,11 @@
 - [x] Deep research report on TLC integration
 - [x] CLAUDE.md with TLC governance overlay
 - [x] tasks/ structure (todo.md, lessons.md, pause-state.md)
-- [ ] Identity migration: package.json name "next-forge" → "mad-mall-production"
-- [ ] README rewrite: product narrative with non-clinical boundary, safety thesis, roadmap
-- [ ] Product Definition doc: "MADMall is safety work on its own terms"
-- [ ] Evidence Index: links to kiro-hackathon-mad-mall, black-women-and-graves-disease, the-living-constitution
-- [ ] PR template requiring V&T Statement and tasks/ updates
+- [x] Identity migration: package.json name "next-forge" → "mad-mall-production"
+- [x] README rewrite: product narrative with non-clinical boundary, safety thesis, roadmap
+- [x] Product Definition doc: "MADMall is safety work on its own terms" (docs/PRODUCT_DEFINITION.md)
+- [x] Evidence Index: links to kiro-hackathon-mad-mall, black-women-and-graves-disease, the-living-constitution (docs/EVIDENCE_INDEX.md)
+- [x] PR template requiring V&T Statement and tasks/ updates (.github/pull_request_template.md)
 
 ## Phase 1: Navigation (Complete)
 - [x] Cursor-centered zoom on /plan page
