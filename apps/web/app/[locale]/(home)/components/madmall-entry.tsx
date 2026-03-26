@@ -1,93 +1,234 @@
 import Link from "next/link";
 
+/**
+ * MadmallEntry — The Magazine Spread
+ *
+ * Condé Nast (luxury editorial) × TV Guide (familiar grid) × Amazon (convenience).
+ * ZMUX Vellum Clinical aesthetic: vellum cards, soul gold accents,
+ * monolithic border-radius, JetBrains Mono labels.
+ *
+ * This is the "What You Can Do Right Now" section — the mall directory
+ * presented as a luxury magazine table of contents.
+ */
 export const MadmallEntry = () => (
-  <section className="w-full bg-zinc-950 py-16">
+  <section
+    className="w-full py-16"
+    style={{ backgroundColor: '#141414' }}
+  >
     <div className="container mx-auto px-8">
-      <header className="mb-10">
-        <p className="text-xs text-zinc-400 tracking-[0.35em]">
-          RIBBON CUT • SITE UNDER CONSTRUCTION
-        </p>
-        <h2 className="mt-4 font-light text-4xl text-zinc-50 tracking-[0.25em]">
+      {/* Magazine masthead */}
+      <header className="mb-12">
+        <div className="flex items-center gap-4">
+          <span
+            className="inline-block rounded-full border px-4 py-1.5 text-xs"
+            style={{
+              borderColor: 'rgba(252, 250, 242, 0.3)',
+              color: '#fcfaf2',
+              fontFamily: '"JetBrains Mono", monospace',
+            }}
+          >
+            ● SITE UNDER CONSTRUCTION
+          </span>
+          <span
+            className="text-xs uppercase tracking-[0.3em]"
+            style={{
+              color: '#b38b4d',
+              fontFamily: '"JetBrains Mono", monospace',
+            }}
+          >
+            Ribbon Cut
+          </span>
+        </div>
+        <h2
+          className="mt-6 text-4xl font-light uppercase tracking-[0.25em] md:text-5xl"
+          style={{
+            color: '#fcfaf2',
+            fontFamily: '"Space Grotesk", system-ui, sans-serif',
+          }}
+        >
           MADMall
         </h2>
-        <p className="mt-4 max-w-3xl text-sm text-zinc-300 leading-relaxed">
+        <p
+          className="mt-4 max-w-3xl text-sm leading-relaxed"
+          style={{ color: 'rgba(252, 250, 242, 0.6)' }}
+        >
           A virtual luxury outdoor mall + teaching clinic for Black women with
-          Graves' disease. This interface intentionally looks like a
-          construction site: the first thing you see is the plan, rendered as
-          wall-sized "posters" you can navigate on an infinite canvas.
+          Graves&apos; disease. The first thing you see is the plan — rendered as
+          wall-sized blueprints you can navigate.
         </p>
       </header>
 
-      <div className="madmall-grid border border-zinc-800 p-8">
-        <h3 className="font-light text-2xl text-zinc-50 tracking-wide">
-          What You Can Do Right Now
-        </h3>
-
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          <Link
-            className="block border border-zinc-700 bg-zinc-950 p-6 transition-colors hover:border-zinc-500"
-            href="/plan"
+      {/* Magazine grid — TV Guide meets Condé Nast */}
+      <div className="grid gap-6 md:grid-cols-3">
+        {/* Feature card 1 — Plan (large editorial) */}
+        <Link
+          className="group block rounded-[30px] p-8 transition-all duration-500 hover:-translate-y-1"
+          href="/plan"
+          style={{
+            background: 'rgba(252, 250, 242, 0.05)',
+            border: '1px solid rgba(252, 250, 242, 0.1)',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <span
+              className="text-xs uppercase tracking-[0.35em]"
+              style={{
+                color: 'rgba(252, 250, 242, 0.4)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              Posters
+            </span>
+            <span
+              className="text-xs"
+              style={{
+                color: 'rgba(252, 250, 242, 0.3)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              Infinite Canvas
+            </span>
+          </div>
+          <h4
+            className="mt-4 text-xl font-light uppercase tracking-wide transition-colors duration-500 group-hover:text-[#b38b4d]"
+            style={{
+              color: '#fcfaf2',
+              fontFamily: '"Space Grotesk", system-ui, sans-serif',
+            }}
           >
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400 tracking-[0.35em]">
-                POSTERS
-              </span>
-              <span className="text-xs text-zinc-500">INFINITE CANVAS</span>
-            </div>
-            <h4 className="mt-3 font-light text-lg text-zinc-50 tracking-wide">
-              Plan (Interactive)
-            </h4>
-            <p className="mt-2 text-sm text-zinc-400">
-              Navigate the ALLINONE plan as a construction-site wall of
-              blueprints.
-            </p>
-          </Link>
-
-          <Link
-            className="block border border-zinc-700 bg-zinc-950 p-6 transition-colors hover:border-zinc-500"
-            href="/ml"
+            Plan (Interactive)
+          </h4>
+          <p
+            className="mt-3 text-sm leading-relaxed"
+            style={{ color: 'rgba(252, 250, 242, 0.4)' }}
           >
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400 tracking-[0.35em]">
-                CORE
-              </span>
-              <span className="text-xs text-zinc-500">TRAINING</span>
-            </div>
-            <h4 className="mt-3 font-light text-lg text-zinc-50 tracking-wide">
-              ML Training
-            </h4>
-            <p className="mt-2 text-sm text-zinc-400">
-              Byte-size data collection + distributed collection network → model
-              training pipeline.
-            </p>
-          </Link>
-
-          <Link
-            className="block border border-zinc-700 bg-zinc-950 p-6 transition-colors hover:border-zinc-500"
-            href="/agents"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm text-zinc-400 tracking-[0.35em]">
-                INVENTORY
-              </span>
-              <span className="text-xs text-zinc-500">IBM</span>
-            </div>
-            <h4 className="mt-3 font-light text-lg text-zinc-50 tracking-wide">
-              Agents
-            </h4>
-            <p className="mt-2 text-sm text-zinc-400">
-              Imported IBM agent curriculum artifacts (role mapping comes next).
-            </p>
-          </Link>
-        </div>
-
-        <div className="madmall-caution mt-8 border border-zinc-700 bg-zinc-950 p-4">
-          <p className="text-xs text-zinc-300 leading-relaxed">
-            NOTICE: This is an "under construction" environment. No medical
-            advice is provided. No PHI is collected. This repo is building the
-            training + governance architecture first.
+            Navigate the ALLINONE plan as a construction-site wall of
+            blueprints.
           </p>
-        </div>
+          {/* Gold accent line */}
+          <div
+            className="mt-6 h-0.5 w-12 transition-all duration-500 group-hover:w-full"
+            style={{ backgroundColor: '#b38b4d' }}
+          />
+        </Link>
+
+        {/* Feature card 2 — ML Training */}
+        <Link
+          className="group block rounded-[30px] p-8 transition-all duration-500 hover:-translate-y-1"
+          href="/ml"
+          style={{
+            background: '#b38b4d',
+            color: '#fcfaf2',
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <span
+              className="text-xs uppercase tracking-[0.35em]"
+              style={{
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              Core
+            </span>
+            <span
+              className="text-xs"
+              style={{
+                color: 'rgba(255, 255, 255, 0.5)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              Training
+            </span>
+          </div>
+          <h4
+            className="mt-4 text-xl font-light uppercase tracking-wide"
+            style={{ fontFamily: '"Space Grotesk", system-ui, sans-serif' }}
+          >
+            ML Training
+          </h4>
+          <p className="mt-3 text-sm leading-relaxed opacity-80">
+            Byte-size data collection + distributed collection network →
+            model training pipeline.
+          </p>
+          <div
+            className="mt-6 h-0.5 w-12 transition-all duration-500 group-hover:w-full"
+            style={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
+          />
+        </Link>
+
+        {/* Feature card 3 — Agents */}
+        <Link
+          className="group block rounded-[30px] p-8 transition-all duration-500 hover:-translate-y-1"
+          href="/agents"
+          style={{
+            background: 'rgba(252, 250, 242, 0.05)',
+            border: '1px solid rgba(252, 250, 242, 0.1)',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <span
+              className="text-xs uppercase tracking-[0.35em]"
+              style={{
+                color: 'rgba(252, 250, 242, 0.4)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              Inventory
+            </span>
+            <span
+              className="text-xs"
+              style={{
+                color: 'rgba(252, 250, 242, 0.3)',
+                fontFamily: '"JetBrains Mono", monospace',
+              }}
+            >
+              IBM
+            </span>
+          </div>
+          <h4
+            className="mt-4 text-xl font-light uppercase tracking-wide transition-colors duration-500 group-hover:text-[#b38b4d]"
+            style={{
+              color: '#fcfaf2',
+              fontFamily: '"Space Grotesk", system-ui, sans-serif',
+            }}
+          >
+            Agents
+          </h4>
+          <p
+            className="mt-3 text-sm leading-relaxed"
+            style={{ color: 'rgba(252, 250, 242, 0.4)' }}
+          >
+            Imported IBM agent curriculum artifacts (role mapping comes next).
+          </p>
+          <div
+            className="mt-6 h-0.5 w-12 transition-all duration-500 group-hover:w-full"
+            style={{ backgroundColor: '#a65d45' }}
+          />
+        </Link>
+      </div>
+
+      {/* Construction notice — non-clinical */}
+      <div
+        className="mt-8 rounded-[20px] p-6"
+        style={{
+          background: 'rgba(252, 250, 242, 0.03)',
+          border: '1px solid rgba(252, 250, 242, 0.08)',
+        }}
+      >
+        <p
+          className="text-xs leading-relaxed"
+          style={{
+            color: 'rgba(252, 250, 242, 0.4)',
+            fontFamily: '"JetBrains Mono", monospace',
+          }}
+        >
+          NOTICE: This is an &quot;under construction&quot; environment. No medical
+          advice is provided. No PHI is collected. This repo is building the
+          training + governance architecture first.
+        </p>
       </div>
     </div>
   </section>
