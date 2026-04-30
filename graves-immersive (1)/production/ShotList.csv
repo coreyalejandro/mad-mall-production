@@ -1,0 +1,11 @@
+SceneID,Title,Seed,Duration,FPS,Resolution,Actor,Notes
+01,Title Page,740153,14,24,4096x2304,Yes,"Hero portrait, nebula → cellular, sky text"
+02,Welcome,902311,14,24,4096x2304,No,"Bloodstream galaxy, thyroid beacon"
+03,Thyroid,112377,16,24,4096x2304,No,"TSI→TSHR, T3/T4 surge, heat shimmer"
+04,Heart,778204,14,24,4096x2304,Yes,"Tachycardia, beta-sensitivity, calm cut-in"
+05,Brain & Nerves,661590,16,24,4096x2304,Yes,"Neural cascades, pituitary TSH down"
+06,Skin/Hair/Scalp,335921,14,24,4096x2304,No,"Sweat/itch, telogen shift, regrowth"
+07,Eyes,559480,14,24,4096x2304,No,"Proptosis, tear film breakup, improvement"
+08,Muscles & Bones,229014,16,24,4096x2304,No,"Protein catabolism, BMD down/up"
+09,Resilience,874120,14,24,4096x2304,Yes,"Systems harmonize, sunrise gold"
+10,Conclusion,740153,12,24,4096x2304,Yes,"Empowered portrait, aurora, message"

@@ -1,0 +1,57 @@
+name: Video Production Autopilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenes:
+        description: "Optional CSV of scene IDs (e.g., 01_title,03_thyroid)"
+        required: false
+        default: ""
+      codec:
+        description: "Video codec for HLS"
+        required: true
+        default: "h264"
+        type: choice
+        options:
+          - h264
+          - hevc
+      concurrency:
+        description: "Parallel render jobs"
+        required: true
+        default: "2"
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    env:
+      SORA_API_URL: ${{ secrets.SORA_API_URL }}
+      SORA_API_KEY: ${{ secrets.SORA_API_KEY }}
+      CODEC: ${{ inputs.codec }}
+      SCENES: ${{ inputs.scenes }}
+      CONCURRENCY: ${{ inputs.concurrency }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run orchestrator
+        run: node scripts/produce.mjs
+
+      - name: Upload artifacts (masters + HLS)
+        uses: actions/upload-artifact@v4
+        with:
+          name: video_outputs
+          path: |
+            out/raw
+            out/Web_HLS
+
+      # Optional deploy to S3/GCS/CDN can be added here once secrets are provided.
