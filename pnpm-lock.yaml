@@ -327,7 +327,7 @@ importers:
         version: 10.1.4(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.4))(react@19.2.4))
       '@storybook/nextjs':
         specifier: ^10.1.4
-        version: 10.1.4(@types/webpack@5.28.5(esbuild@0.27.1))(esbuild@0.27.1)(next@16.0.10(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(type-fest@4.41.0)(typescript@5.8.3)(vite@6.2.4(@types/node@24.7.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.7.0))(webpack-hot-middleware@2.26.1)(webpack@5.104.1(esbuild@0.27.1))
+        version: 10.1.4(@types/webpack@5.28.5(esbuild@0.27.1))(esbuild@0.27.1)(next@16.0.10(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(type-fest@4.41.0)(typescript@5.8.3)(vite@6.2.4(@types/node@24.7.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.7.0))(webpack-hot-middleware@2.26.1)(webpack@5.104.1(esbuild@0.27.1))
       '@storybook/react':
         specifier: ^10.2.4
         version: 10.2.4(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.8.3)
@@ -1033,8 +1033,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       stripe:
-        specifier: ^20.0.0
-        version: 20.0.0(@types/node@24.10.9)
+        specifier: ^20.3.0
+        version: 20.3.0(@types/node@24.10.9)
       zod:
         specifier: ^4.1.13
         version: 4.1.13
@@ -10547,8 +10547,8 @@ packages:
     resolution: {integrity: sha512-aT2BU9KkizY9SATf14WhhYVv2uOapBWX0OFWF4xvcj1mPaNotlSc2CsxpS4DS46ZueSppmCF5BX1sNYBtwBvfw==}
     engines: {node: '>=12.*'}
 
-  stripe@20.0.0:
-    resolution: {integrity: sha512-EaZeWpbJOCcDytdjKSwdrL5BxzbDGNueiCfHjHXlPdBQvLqoxl6AAivC35SPzTmVXJb5duXQlXFGS45H0+e6Gg==}
+  stripe@20.3.0:
+    resolution: {integrity: sha512-DYzcmV1MfYhycr1GwjCjeQVYk9Gu8dpxyTlu7qeDCsuguug7oUTxPsUQuZeSf/OPzK7pofqobvOKVqAwlpgf/Q==}
     engines: {node: '>=16'}
     peerDependencies:
       '@types/node': '>=16'
@@ -15538,7 +15538,7 @@ snapshots:
       react: 19.2.4
       react-dom: 19.2.1(react@19.2.4)
 
-  '@storybook/nextjs@10.1.4(@types/webpack@5.28.5(esbuild@0.27.1))(esbuild@0.27.1)(next@16.0.10(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(type-fest@4.41.0)(typescript@5.8.3)(vite@6.2.4(@types/node@24.7.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.7.0))(webpack-hot-middleware@2.26.1)(webpack@5.104.1(esbuild@0.27.1))':
+  '@storybook/nextjs@10.1.4(@types/webpack@5.28.5(esbuild@0.27.1))(esbuild@0.27.1)(next@16.0.10(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(bufferutil@4.0.9)(prettier@3.5.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(type-fest@4.41.0)(typescript@5.8.3)(vite@6.2.4(@types/node@24.7.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.7.0))(webpack-hot-middleware@2.26.1)(webpack@5.104.1(esbuild@0.27.1))':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.4)
@@ -15562,7 +15562,7 @@ snapshots:
       css-loader: 6.11.0(webpack@5.104.1(esbuild@0.27.1))
       image-size: 2.0.2
       loader-utils: 3.3.1
-      next: 16.0.10(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      next: 16.0.10(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.104.1(esbuild@0.27.1))
       postcss: 8.5.6
       postcss-loader: 8.2.0(postcss@8.5.6)(typescript@5.8.3)(webpack@5.104.1(esbuild@0.27.1))
@@ -16731,6 +16731,10 @@ snapshots:
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
       acorn: 8.16.0
+
+  acorn-jsx@5.3.2(acorn@8.15.0):
+    dependencies:
+      acorn: 8.15.0
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
@@ -22868,9 +22872,7 @@ snapshots:
       '@types/node': 24.10.1
       qs: 6.14.0
 
-  stripe@20.0.0(@types/node@24.10.9):
-    dependencies:
-      qs: 6.14.0
+  stripe@20.3.0(@types/node@24.10.9):
     optionalDependencies:
       '@types/node': 24.10.9
 
