@@ -404,8 +404,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/seo
       '@rescale/nemo':
-        specifier: ^2.0.2
-        version: 2.0.2(next@16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
+        specifier: ^2.1.1
+        version: 2.1.1(next@16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       '@sentry/nextjs':
         specifier: ^10.29.0
         version: 10.29.0(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(next@16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(webpack@5.104.1(esbuild@0.27.1))
@@ -4196,10 +4196,10 @@ packages:
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
 
-  '@rescale/nemo@2.0.2':
-    resolution: {integrity: sha512-d3t9hH0gN3PCtccxm7GLYwoJw6ZpZXqsWjLaB5d8pIXGJiZiqXzILcNiQaE0hgDO4Jh1ONflrurWdb2nVrjj9A==}
+  '@rescale/nemo@2.1.1':
+    resolution: {integrity: sha512-LQC3Ec3GxtE0iCPIaiaSU/EeeQ5RG39xGjV3BODAkhsN/akWru0Aj7UGfKLSkiXJiQrhcqtzh0t/XWt9RgnXZQ==}
     peerDependencies:
-      next: ^13.0.0-0 || ^14.0.0-0 || ^15.0.0-0
+      next: '>=13.0.0'
 
   '@rolldown/pluginutils@1.0.0-beta.47':
     resolution: {integrity: sha512-8QagwMH3kNCuzD8EWL8R2YPW5e4OrHNSAHRFDdmFqEwEaD/KcNKjVoumo+gP2vW5eKB2UPbM6vTYiGZX0ixLnw==}
@@ -9246,6 +9246,9 @@ packages:
 
   path-to-regexp@6.2.1:
     resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
+
+  path-to-regexp@6.3.0:
+    resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
 
   path-to-regexp@8.3.0:
     resolution: {integrity: sha512-7jdwVIRtsP8MYpdXSwOS0YdD0Du+qOoF/AEPIt88PcCFrZCzx41oxku1jD88hZBwbNUIEfpqvuhjFaMAqMTWnA==}
@@ -14822,10 +14825,10 @@ snapshots:
     dependencies:
       react: 19.2.1
 
-  '@rescale/nemo@2.0.2(next@16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
+  '@rescale/nemo@2.1.1(next@16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
     dependencies:
       next: 16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      path-to-regexp: 6.2.1
+      path-to-regexp: 6.3.0
 
   '@rolldown/pluginutils@1.0.0-beta.47': {}
 
@@ -16452,6 +16455,10 @@ snapshots:
       acorn: 8.14.1
 
   acorn-import-phases@1.0.4(acorn@8.15.0):
+    dependencies:
+      acorn: 8.15.0
+
+  acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
       acorn: 8.15.0
 
@@ -20967,6 +20974,8 @@ snapshots:
       minipass: 7.1.2
 
   path-to-regexp@6.2.1: {}
+
+  path-to-regexp@6.3.0: {}
 
   path-to-regexp@8.3.0: {}
 
