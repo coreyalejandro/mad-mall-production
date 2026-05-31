@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The MAD Mall — Strategic Concept Brief & Design Plan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script defer>
+    'use strict';
+    (() => {
+      const tw = (typeof window !== 'undefined' && window.tailwind) || {};
+      tw.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui'],
+            serif: ['Playfair Display','ui-serif','Georgia']
+          },
+          colors: {
+            terracotta: {
+              50:'#fdf4f1',100:'#fbe6de',200:'#f6ccbd',300:'#efaa93',400:'#e67f67',500:'#dc5c44',600:'#cd4a34',700:'#ab3a2a',800:'#8d3227',900:'#742e26'
+            },
+            beige: {
+              50:'#faf8f5',100:'#f4f0ea',200:'#e8ddd0',300:'#d9c7b0',400:'#c7a886',500:'#ba8f6b',600:'#ad7c5f',700:'#8f654f',800:'#755346',900:'#61453c'
+            },
+            forest: {
+              50:'#f0f9f4',100:'#dcf2e4',200:'#bbe5cd',300:'#8dd1ab',400:'#57b581',500:'#339b60',600:'#267d4c',700:'#1f653f',800:'#1c5134',900:'#18432c'
+            },
+            stoneink: {
+              50:'#fafaf9',100:'#f5f5f4',200:'#e7e5e4',300:'#d6d3d1',400:'#a8a29e',500:'#78716c',600:'#57534e',700:'#44403c',800:'#292524',900:'#1c1917'
+            }
+          },
+          boxShadow:{
+            soft:'0 12px 30px rgba(0,0,0,.08)'
+          }
+        }
+      },
+      darkMode:'class'
+    };
+      if (typeof window !== 'undefined') { window.tailwind = tw; }
+    })();
+  </script>
+  <style>
+    :root { --toc-w: 300px; }
+    @media (min-width: 1024px){
+      .main { margin-left: var(--toc-w); }
+    }
+    .glass { background: rgba(255,255,255,.7); backdrop-filter: blur(10px); }
+    /* Print styles */
+    @media print{
+      nav, #mobileTocBtn, #a11yBar { display:none !important; }
+      .main{ margin:0 !important; }
+      section{ break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-beige-50 text-stoneink-900 selection:bg-terracotta-200/70">
+  <!-- Accessibility / Utility Bar -->
+  <div id="a11yBar" class="fixed z-50 right-4 top-4 flex items-center gap-2 rounded-full glass border border-beige-200 shadow-soft px-3 py-2">
+    <button id="incText" class="text-sm px-2 py-1 rounded bg-beige-100 hover:bg-beige-200" aria-label="Increase text size">A+</button>
+    <button id="decText" class="text-sm px-2 py-1 rounded bg-beige-100 hover:bg-beige-200" aria-label="Decrease text size">A−</button>
+    <button id="contrast" class="text-sm px-2 py-1 rounded bg-beige-100 hover:bg-beige-200" aria-pressed="false" aria-label="Toggle high contrast">HC</button>
+    <button id="theme" class="text-sm px-2 py-1 rounded bg-beige-100 hover:bg-beige-200" aria-label="Toggle dark mode">☾</button>
+  </div>
+
+  <!-- TOC -->
+  <nav class="fixed z-40 inset-y-0 left-0 w-(--toc-w) bg-linear-to-b from-beige-50 to-beige-100 border-r border-beige-200 p-6 overflow-y-auto hidden lg:block" aria-label="Table of contents">
+    <h2 class="font-serif text-2xl text-terracotta-700 mb-4">Contents</h2>
+    <ol class="space-y-2 text-sm">
+      <li><a href="#summary" class="block px-2 py-1 rounded hover:bg-terracotta-50">Executive Summary</a></li>
+      <li><a href="#lived" class="block px-2 py-1 rounded hover:bg-terracotta-50">Lived Experience</a></li>
+      <li><a href="#benchmark" class="block px-2 py-1 rounded hover:bg-terracotta-50">Benchmarking</a></li>
+      <li><a href="#ecosystem" class="block px-2 py-1 rounded hover:bg-terracotta-50">Ecosystem</a></li>
+      <li><a href="#aime" class="block px-2 py-1 rounded hover:bg-terracotta-50">AIme Platform</a></li>
+      <li><a href="#components" class="block px-2 py-1 rounded hover:bg-terracotta-50">Components (30 + 20)</a></li>
+      <li><a href="#implementation" class="block px-2 py-1 rounded hover:bg-terracotta-50">Implementation</a></li>
+      <li><a href="#citations" class="block px-2 py-1 rounded hover:bg-terracotta-50">Citations</a></li>
+    </ol>
+  </nav>
+
+  <!-- Mobile TOC Button -->
+  <button id="mobileTocBtn" class="lg:hidden fixed left-4 top-4 z-50 rounded-full bg-terracotta-600 text-white shadow-soft px-4 py-2">Menu</button>
+  <dialog id="tocDialog" class="backdrop:bg-black/40 rounded-xl p-0">
+    <div class="w-[90vw] max-w-sm bg-beige-50 border border-beige-200 rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-serif text-xl text-terracotta-700">Contents</h3>
+        <button id="closeToc" class="text-stoneink-600 hover:text-stoneink-900">✕</button>
+      </div>
+      <ol class="space-y-2 text-sm">
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#summary">Executive Summary</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#lived">Lived Experience</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#benchmark">Benchmarking</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#ecosystem">Ecosystem</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#aime">AIme Platform</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#components">Components</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#implementation">Implementation</a></li>
+        <li><a class="toc-link block px-2 py-1 rounded hover:bg-terracotta-50" href="#citations">Citations</a></li>
+      </ol>
+    </div>
+  </dialog>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] overflow-hidden bg-linear-to-br from-beige-50 via-forest-50 to-terracotta-50">
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <!-- Inline SVG pattern (no external assets) -->
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#f6ccbd"/>
+              <stop offset="100%" stop-color="#bbe5cd"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g1)"/>
+          <g fill="none" stroke="#8dd1ab" stroke-opacity=".6">
+            <circle cx="20%" cy="30%" r="180"/>
+            <circle cx="80%" cy="60%" r="240"/>
+            <circle cx="55%" cy="20%" r="120"/>
+          </g>
+        </svg>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6">
+          <h1 class="font-serif text-5xl md:text-6xl leading-tight text-terracotta-800">The <em>MAD Mall</em></h1>
+          <p class="font-serif text-2xl text-terracotta-700">A Wellness Destination for Black Women with Graves’ Disease</p>
+          <p class="text-lg text-stoneink-700">Retail therapy with a purpose: culturally grounded care, sisterhood, and AI-powered support in a hybrid physical + digital sanctuary.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#summary" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-terracotta-600 text-white shadow-soft hover:bg-terracotta-700">Read Summary</a>
+            <a href="#components" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-forest-600 text-white shadow-soft hover:bg-forest-700">Jump to Components</a>
+          </div>
+        </div>
+        <div class="grid gap-4">
+          <div class="glass border border-beige-200 rounded-2xl p-5 shadow-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-8 h-8 grid place-items-center rounded-full bg-terracotta-100 text-terracotta-700">❤</span>
+              <h3 class="font-serif text-xl text-terracotta-800">Culturally‑Grounded Care</h3>
+            </div>
+            <p class="text-stoneink-700">Every touchpoint honors Black women’s lived experiences and addresses real inequities with empathy and rigor.</p>
+          </div>
+          <div class="glass border border-beige-200 rounded-2xl p-5 shadow-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-8 h-8 grid place-items-center rounded-full bg-forest-100 text-forest-700">🤖</span>
+              <h3 class="font-serif text-xl text-forest-800">AI‑Powered Support</h3>
+            </div>
+            <p class="text-stoneink-700">AIme provides 24/7 navigation, education, and peer connection—personalized and privacy‑preserving.</p>
+          </div>
+          <div class="glass border border-beige-200 rounded-2xl p-5 shadow-soft">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-8 h-8 grid place-items-center rounded-full bg-beige-100 text-beige-800">👭</span>
+              <h3 class="font-serif text-xl text-terracotta-800">Community Integration</h3>
+            </div>
+            <p class="text-stoneink-700">Sisterhood circles, mentorship, and joyful programming make connection part of the treatment plan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section id="summary" class="px-6 py-16 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-4xl text-terracotta-800 mb-6">Executive Summary</h2>
+        <p class="text-lg text-stoneink-800">The MAD Mall blends hospitality, shopping, food, entertainment, health, and wellness into a culturally specific destination designed for Black women living with Graves’ disease. It pairs a biophilic, resort‑like physical environment with a digital twin—<strong>AIme (AI + Me)</strong>—to deliver navigation, education, and community support before, during, and after each visit. The experience is joyful, dignified, and outcomes‑oriented: earlier diagnosis, better adherence, reduced anxiety, and stronger social support.</p>
+      </div>
+    </section>
+
+    <!-- LIVED EXPERIENCE -->
+    <section id="lived" class="px-6 py-16">
+      <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="font-serif text-3xl text-terracotta-800 mb-4">The Lived Experience</h2>
+          <p class="text-stoneink-800 mb-4">Black women face higher Graves’ prevalence, delayed diagnosis, and more complications. Symptoms—palpitations, tremor, heat intolerance, anxiety, insomnia, eye changes, hair thinning—collide with systemic barriers and the pressure to appear perpetually strong. The result: fear, confusion, and isolation. MAD Mall counters with clear education, consistent navigation, mental health care, and peer community—turning treatment into a supported journey.</p>
+          <blockquote class="border-l-4 border-terracotta-600 pl-4 italic text-terracotta-800">“The more Black women are forced to be strong, the less safe it feels to be vulnerable. Care must make vulnerability safe again.”</blockquote>
+        </div>
+        <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-serif text-2xl text-forest-800 mb-3">Regulate & Resist Framework</h3>
+          <ul class="space-y-2 text-stoneink-800">
+            <li><span class="font-semibold text-stoneink-900">Regulate:</span> meds adherence, symptom tracking, rest, nutrition, movement, counseling.</li>
+            <li><span class="font-semibold text-stoneink-900">Resist:</span> biased care, access gaps, cost burdens, fragmented information—answered by navigation, subsidies, and advocacy.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENCHMARKING -->
+    <section id="benchmark" class="px-6 py-16 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-serif text-3xl text-terracotta-800 mb-6">Benchmarking & Best Practices</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+            <h3 class="font-serif text-2xl text-terracotta-800 mb-2">The Shops at La Cantera</h3>
+            <p class="text-stoneink-800">Open‑air, biophilic design; balance of luxury + accessible brands; culinary and social hubs; frequent first‑to‑market debuts; concierge‑grade service. <span class="text-stoneink-600">We adapt these to a health context: serene landscapes, dignified hospitality, discovery‑driven programming, and relentlessly excellent service.</span></p>
+          </div>
+          <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+            <h3 class="font-serif text-2xl text-forest-800 mb-2">Design Principles Applied</h3>
+            <ul class="list-disc pl-5 space-y-1 text-stoneink-800">
+              <li>Biophilic calm (greenery, water, daylight)</li>
+              <li>Wayfinding that feels like retail, not a hospital</li>
+              <li>Dining as gathering and nourishment therapy</li>
+              <li>Ever‑fresh programming (classes, pop‑ups, debuts)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOSYSTEM -->
+    <section id="ecosystem" class="px-6 py-16">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="font-serif text-3xl text-terracotta-800 mb-4">The MAD Mall Ecosystem</h2>
+          <p class="text-stoneink-800 mb-4">A hybrid model fusing a biophilic physical hub with an AI‑driven digital twin. In‑mall: endocrine clinic, urgent care, pharmacy, diagnostics, counseling, sisterhood lounge, studio, café, quiet rooms, childcare. In‑app (AIme): navigation, education, reminders, peer matching, telehealth, benefits help, rewards.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700 mb-1">Care Core</h4>
+              <p class="text-sm">Endocrinology, urgent care, pharmacy, labs.</p>
+            </div>
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700 mb-1">Community</h4>
+              <p class="text-sm">Sisterhood lounge, theater, workshops, childcare.</p>
+            </div>
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700 mb-1">Wellness</h4>
+              <p class="text-sm">Studio, VR pods, biofeedback, spa, garden.</p>
+            </div>
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700 mb-1">Operations</h4>
+              <p class="text-sm">EHR, navigation, transport, safety with empathy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-serif text-2xl text-forest-800 mb-2">Biophilic Zoning</h3>
+          <ul class="space-y-2 text-stoneink-800">
+            <li><span class="inline-block w-3 h-3 bg-terracotta-400 rounded-full mr-2"></span><strong>Welcome & Orientation:</strong> concierge, directory, AR buddy</li>
+            <li><span class="inline-block w-3 h-3 bg-forest-400 rounded-full mr-2"></span><strong>Clinical Core:</strong> exams, labs, pharmacy</li>
+            <li><span class="inline-block w-3 h-3 bg-beige-400 rounded-full mr-2"></span><strong>Wellness Zone:</strong> VR, meditation, spa</li>
+            <li><span class="inline-block w-3 h-3 bg-terracotta-300 rounded-full mr-2"></span><strong>Community Hub:</strong> theater, lounges, café</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AIME -->
+    <section id="aime" class="px-6 py-16 bg-white">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="font-serif text-3xl text-terracotta-800 mb-4">AIme: Digital Twin Platform</h2>
+          <div class="grid gap-4">
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700">Personalization</h4>
+              <p class="text-stoneink-800 text-sm">24/7 concierge, adaptive tone, learning‑style aware education, symptom triage, itinerary building.</p>
+            </div>
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700">Connection</h4>
+              <p class="text-stoneink-800 text-sm">AI peer matching, moderated forums, events calendar, telepresence pods scheduling.</p>
+            </div>
+            <div class="glass border border-beige-200 rounded-xl p-4 shadow-soft">
+              <h4 class="font-semibold text-terracotta-700">Trust & Privacy</h4>
+              <p class="text-stoneink-800 text-sm">HIPAA‑aligned design, encryption, role‑based access, audit trails, human‑in‑the‑loop.</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-serif text-2xl text-forest-800 mb-2">User Flow (Hybrid)</h3>
+          <ol class="list-decimal pl-5 space-y-1 text-stoneink-800">
+            <li>Onboard in app → preferences, goals, consent.</li>
+            <li>AIme builds visit plan → book care, classes, childcare, meals.</li>
+            <li>Arrive → digital check‑in, AR wayfinding, concierge welcome.</li>
+            <li>Care + wellness + community in one itinerary.</li>
+            <li>Leave with summaries, meds, follow‑ups, home integration (Alexa, reminders).</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" class="px-6 py-16">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-serif text-3xl text-terracotta-800 mb-6">Components & Services</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Base (30) -->
+          <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+            <h3 class="font-serif text-2xl text-forest-800 mb-4">Base Components (30)</h3>
+            <ul class="grid sm:grid-cols-2 gap-3 text-stoneink-800 text-sm">
+              <li>Care Navigation Desk</li>
+              <li>AIme Personal Health App</li>
+              <li>Endocrinology Clinic</li>
+              <li>Urgent Care Suite</li>
+              <li>On‑Site Pharmacy + consult rooms</li>
+              <li>Diagnostics Lab (T3/T4, ultrasound)</li>
+              <li>Mental Health Counseling</li>
+              <li>Sisterhood Lounge</li>
+              <li>Education & Resource Hub</li>
+              <li>Nutrition Café + RD consults</li>
+              <li>Fitness & Movement Studio</li>
+              <li>Tranquility (nap/prayer) rooms</li>
+              <li>Childcare Center</li>
+              <li>Adaptive Beauty Bar/Salon</li>
+              <li>Community/Legal Aid Desk</li>
+              <li>Transportation Assistance</li>
+              <li>Extended & Weekend Hours</li>
+              <li>Accessible Wayfinding + AR Buddy</li>
+              <li>Unified EHR Integration</li>
+              <li>24/7 Multi‑channel Support</li>
+              <li>Safe & Empathetic Security</li>
+              <li>Privacy‑first Spaces</li>
+              <li>Peer Mentor Program</li>
+              <li>Financial Counseling</li>
+              <li>Medication Adherence Program</li>
+              <li>Care Plan Summaries (visit recap)</li>
+              <li>Lab Result Coaching</li>
+              <li>Return‑engagement Prompts</li>
+              <li>Outcomes & Feedback Loop</li>
+              <li>Inclusive Hiring & Training</li>
+            </ul>
+          </div>
+          <!-- Value Added (20) -->
+          <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+            <h3 class="font-serif text-2xl text-forest-800 mb-4">Value‑Added Components (20)</h3>
+            <ul class="grid sm:grid-cols-2 gap-3 text-stoneink-800 text-sm">
+              <li>VR Relaxation Pods</li>
+              <li>“Inside Your Body” AR/VR Tour</li>
+              <li>Comic Relief Theater</li>
+              <li>Fashion‑meets‑Wellness Boutique</li>
+              <li>AI‑Powered Peer Matchmaking</li>
+              <li>Ancestral Healing Garden</li>
+              <li>Biofeedback / Neurofeedback Lab</li>
+              <li>Personalized Ambience (IoT)</li>
+              <li>Art Therapy Studio + Gallery</li>
+              <li>Gourmet Cooking Classes</li>
+              <li>Mobile Wellness Van</li>
+              <li>Alexa Home Integrations</li>
+              <li>Loyalty & Rewards (“Wellness Wins”)</li>
+              <li>Celebrity/Influencer Health Talks</li>
+              <li>Telepresence Specialist Pods</li>
+              <li>Patient Storytelling Booth</li>
+              <li>Research & Innovation Hub</li>
+              <li>Integrative Holistic Spa</li>
+              <li>Thyroid‑safe Product Certification</li>
+              <li>Micro‑grants for Hardship Relief</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPLEMENTATION -->
+    <section id="implementation" class="px-6 py-16 bg-white">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-serif text-2xl text-terracotta-800 mb-3">Phased Rollout</h3>
+          <ol class="list-decimal pl-5 space-y-2 text-stoneink-800">
+            <li><strong>Digital Foundation (T‑6mo):</strong> Launch AIme, recruit cohort, publish curricula.</li>
+            <li><strong>Soft Launch (T‑1mo):</strong> Invite testers; run clinics, studio, childcare pilots.</li>
+            <li><strong>Grand Opening (T‑0):</strong> Health fair + entertainment; local partners spotlight.</li>
+            <li><strong>Sustained Engagement (T+):</strong> Monthly themes, rewards, outcomes reviews.</li>
+          </ol>
+        </div>
+        <div class="glass border border-beige-200 rounded-2xl p-6 shadow-soft">
+          <h3 class="font-serif text-2xl text-forest-800 mb-3">Partnerships</h3>
+          <ul class="list-disc pl-5 space-y-2 text-stoneink-800">
+            <li>Clinical: endocrine groups, One Medical, ophthalmology.</li>
+            <li>Community: Black Women’s Health Imperative, churches, sororities.</li>
+            <li>Vendors: Black‑owned wellness, beauty, food brands.</li>
+            <li>Tech: AWS, secure EHR, device makers for biofeedback/VR.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITATIONS -->
+    <section id="citations" class="px-6 py-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-serif text-3xl text-terracotta-800 mb-4">Citations (source highlights)</h2>
+        <ul class="list-disc pl-5 space-y-2 text-stoneink-800 text-sm">
+          <li>Shops at La Cantera ranked #1; open‑air, biophilic design and first‑to‑market mix.</li>
+          <li>Black individuals ≈2× Graves’ risk; diagnostic and outcome disparities documented.</li>
+          <li>Symptom clusters and psychosocial impacts (palpitations, anxiety, insomnia, orbitopathy, hair thinning).</li>
+          <li>VR/biofeedback/laughter therapy evidence for anxiety and stress reduction.</li>
+        </ul>
+        <p class="text-xs text-stoneink-600">This page is a design brief. A separate research dossier can embed full citations with links on request.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="px-6 py-12 bg-beige-900 text-beige-100">
+      <div class="max-w-5xl mx-auto text-center">
+        <h3 class="font-serif text-2xl mb-2">The Future of Culturally‑Grounded Care</h3>
+        <p class="text-beige-200">MAD Mall reframes healthcare as hospitality + community + precision guidance—powered by AIme and built with love.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    'use strict';
+    // Smooth scroll
+    for (const a of document.querySelectorAll('a[href^="#"]')) {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+    // Mobile TOC
+    const d = document.getElementById('tocDialog');
+    document.getElementById('mobileTocBtn').addEventListener('click', () => d.showModal());
+    document.getElementById('closeToc').addEventListener('click', () => d.close());
+    for (const l of d.querySelectorAll('.toc-link')) {
+      l.addEventListener('click', () => d.close());
+    }
+    // A11y controls
+    let size = 100;
+    const root = document.documentElement;
+    const body = document.body;
+    document.getElementById('incText').onclick = () => {
+      size = Math.min(140, size + 5);
+      root.style.fontSize = `${size}%`;
+    };
+    document.getElementById('decText').onclick = () => {
+      size = Math.max(90, size - 5);
+      root.style.fontSize = `${size}%`;
+    };
+    document.getElementById('contrast').onclick = (e) => {
+      const pressed = e.currentTarget.getAttribute('aria-pressed') === 'true';
+      e.currentTarget.setAttribute('aria-pressed', String(!pressed));
+      body.classList.toggle('contrast');
+      if (body.classList.contains('contrast')) {
+        body.classList.add('!text-black');
+      } else {
+        body.classList.remove('!text-black');
+      }
+    };
+    document.getElementById('theme').onclick = () => { body.classList.toggle('dark'); };
+  </script>
+</body>
+</html>

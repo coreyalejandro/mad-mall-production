@@ -1,9 +1,7 @@
 {
-  "name": "next-forge",
-  "version": "5.3.2",
-  "bin": {
-    "next-forge": "dist/index.js"
-  },
+  "name": "mad-mall-production",
+  "version": "0.1.0",
+  "private": true,
   "files": [
     "dist/index.js"
   ],

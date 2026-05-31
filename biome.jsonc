@@ -7,6 +7,7 @@
   "files": {
     "includes": [
       "**/*",
+      "!ZMUX_MADMall_PROTOTYPE_ARTIFACT.html",
       "!packages/design-system/components/ui",
       "!packages/design-system/lib",
       "!packages/design-system/hooks",

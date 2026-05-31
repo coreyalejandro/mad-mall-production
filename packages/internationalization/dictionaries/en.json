@@ -1,187 +1,187 @@
 {
   "web": {
     "global": {
-      "primaryCta": "Book a call",
-      "secondaryCta": "Sign up"
+      "primaryCta": "Join the Sisterhood",
+      "secondaryCta": "Learn More"
     },
     "header": {
       "home": "Home",
       "product": {
-        "title": "Product",
-        "description": "Managing a small business today is already tough.",
-        "pricing": "Pricing"
+        "title": "The Mall",
+        "description": "A virtual luxury outdoor mall for Black women with Graves' disease.",
+        "pricing": "Membership"
       },
-      "blog": "Blog",
-      "docs": "Docs",
-      "contact": "Contact",
+      "blog": "Stories",
+      "docs": "Resources",
+      "contact": "Connect",
       "signIn": "Sign in",
-      "signUp": "Get started"
+      "signUp": "Enter the Mall"
     },
     "home": {
       "meta": {
-        "title": "Transform Your Business Operations Today",
-        "description": "In today's fast-paced world, your business deserves better than outdated trading systems. Our innovative platform streamlines operations, reduces complexity, and helps small businesses thrive in the modern economy."
+        "title": "MADMall — Where Healing Meets Community",
+        "description": "A virtual luxury outdoor mall and teaching clinic for Black women living with Graves' disease. Community, cultural safety, and wellness — governed by constitutional principles that put you first."
       },
       "hero": {
-        "announcement": "Read our latest article"
+        "announcement": "Now building in public — watch us grow"
       },
       "cases": {
-        "title": "Empowering Success Stories Across the Globe"
+        "title": "Built With Purpose, Governed With Care"
       },
       "features": {
-        "title": "Powerful Tools for Modern Business",
-        "description": "Discover how our cutting-edge features can revolutionize your daily operations.",
+        "title": "Your Mall, Your Way",
+        "description": "Every feature is designed for you — not adapted for you. Built from the ground up with the understanding that wellness is not one-size-fits-all.",
         "items": [
           {
-            "title": "Streamlined Operations",
-            "description": "Our platform streamlines operations, reduces complexity, and helps small businesses thrive in the modern economy."
+            "title": "Sisterhood Lounge",
+            "description": "Real-time community spaces where you can connect with other women who understand your journey. No explaining. No justifying. Just being."
           },
           {
-            "title": "Real-Time Analytics",
-            "description": "Get instant insights into your business performance with comprehensive analytics and reporting tools."
+            "title": "The Data Store",
+            "description": "An Apple Store-like experience where you can browse, try on, and take home your health data insights. Your data, made beautiful and useful."
           },
           {
-            "title": "Automated Workflows",
-            "description": "Save time and reduce errors with intelligent automation that handles repetitive tasks for you."
+            "title": "Live Experiences",
+            "description": "Wellness workshops, creative sessions, and community events designed around the realities of living with Graves' disease."
           },
           {
-            "title": "Secure Transactions",
-            "description": "Rest easy knowing your business operations are protected by enterprise-grade security and encryption."
+            "title": "Service Directory",
+            "description": "Find providers who understand Graves' disease and Black women's health. Verified, reviewed, and trusted by the community."
           }
         ]
       },
       "stats": {
-        "title": "Real Results, Real Impact",
-        "description": "Join thousands of businesses that have transformed their operations with our platform. Our solutions have helped companies reduce administrative overhead by 60% and increase trading efficiency by 45% on average.",
+        "title": "The Reality We're Addressing",
+        "description": "Graves' disease affects Black women at disproportionate rates, yet the healthcare system was not designed with us in mind. MADMall exists because the system should have been designed for us in the first place.",
         "items": [
           {
-            "title": "Monthly active users",
-            "metric": "100000",
-            "delta": "10",
+            "title": "Black women affected by thyroid disease",
+            "metric": "1300000",
+            "delta": "0",
             "type": "unit"
           },
           {
-            "title": "Daily active users",
-            "metric": "10000",
-            "delta": "-5",
+            "title": "Higher risk for Black women vs. general population",
+            "metric": "300",
+            "delta": "0",
             "type": "unit"
           },
           {
-            "title": "Monthly recurring revenue",
-            "metric": "100000",
-            "delta": "20",
-            "type": "currency"
+            "title": "Types of isolation addressed",
+            "metric": "4",
+            "delta": "0",
+            "type": "unit"
           },
           {
-            "title": "Cost per acquisition",
-            "metric": "100",
-            "delta": "-10",
-            "type": "currency"
+            "title": "Constitutional articles governing every feature",
+            "metric": "5",
+            "delta": "0",
+            "type": "unit"
           }
         ]
       },
       "testimonials": {
-        "title": "Hear from Our Thriving Community",
+        "title": "The Vision Behind the Mall",
         "items": [
           {
-            "title": "Best decision",
-            "description": "Our goal was to streamline SMB trade, making it easier and faster than ever and we did it together.",
+            "title": "Safety by design",
+            "description": "Every feature in MADMall is governed by a Living Constitution — 5 Articles that ensure your safety, dignity, and truth are never compromised.",
             "author": {
-              "name": "Hayden Bleasel",
-              "image": "https://github.com/haydenbleasel.png"
+              "name": "The Living Constitution",
+              "image": ""
             }
           },
           {
-            "title": "Game changer",
-            "description": "This platform revolutionized how we handle our day-to-day operations. The efficiency gains have been remarkable.",
+            "title": "Build it and they will come",
+            "description": "Once people see what's possible — a space designed with luxury, warmth, and cultural resonance — the whole world will get behind it.",
             "author": {
-              "name": "Lee Robinson",
-              "image": "https://github.com/leerob.png"
+              "name": "MADMall Vision",
+              "image": ""
             }
           },
           {
-            "title": "Exceeded expectations",
-            "description": "Implementation was smooth and the results were immediate. Our team adapted quickly and productivity soared.",
+            "title": "Seeing is believing",
+            "description": "For something this novel, people need to see themselves in it. The aesthetic beauty draws you in. The mission keeps you here.",
             "author": {
-              "name": "shadcn",
-              "image": "https://github.com/shadcn.png"
+              "name": "Design Philosophy",
+              "image": ""
             }
           },
           {
-            "title": "Outstanding support",
-            "description": "Not only is the platform powerful, but the customer support team has been exceptional in helping us maximize its potential.",
+            "title": "Nothing about us without us",
+            "description": "Black women with Graves' disease will be trained to run this platform at every level — design, governance, and management.",
             "author": {
-              "name": "Pontus Abrahamsson",
-              "image": "https://github.com/pontusab.png"
+              "name": "Community Commitment",
+              "image": ""
             }
           }
         ]
       },
       "faq": {
-        "title": "Common Questions, Expert Answers",
-        "description": "Get quick answers to your most pressing questions about our platform. We've compiled everything you need to know about transforming your business operations and getting started with modern trading solutions.",
-        "cta": "Any questions? Reach out",
+        "title": "Understanding MADMall",
+        "description": "MADMall is a novel concept — a virtual luxury outdoor mall and teaching clinic. Here's what you need to know.",
+        "cta": "Have questions? We'd love to hear from you",
         "items": [
           {
-            "question": "What is the platform?",
-            "answer": "The platform is a trading platform that allows you to trade with confidence."
+            "question": "What is MADMall?",
+            "answer": "MADMall is a virtual luxury outdoor mall and teaching clinic for Black women living with Graves' disease. It provides community, cultural safety, and wellness support — not medical advice. Think of it as a beautiful online space where wellness meets sisterhood."
           },
           {
-            "question": "How secure is the platform?",
-            "answer": "Our platform employs enterprise-grade security measures, including end-to-end encryption and multi-factor authentication, to ensure your trading activities remain completely secure."
+            "question": "Is MADMall a medical platform?",
+            "answer": "No. MADMall is explicitly non-clinical. We do not diagnose, treat, or prescribe. We provide community, connection, wellness resources, and a service directory — but we are not a replacement for medical care. This boundary is a constitutional constraint enforced at every level."
           },
           {
-            "question": "What trading features are available?",
-            "answer": "The platform offers comprehensive trading tools including real-time market data, advanced charting, automated trading strategies, and detailed analytics to support informed decision-making."
+            "question": "What is the Data Store?",
+            "answer": "The Data Store is like an Apple Store for your health data. You can browse data insights, 'try them on' to see what's relevant to you, and take home what helps. The goal is to make your data personal, beautiful, and useful — so you feel ownership of your own health journey."
           },
           {
-            "question": "How does pricing work?",
-            "answer": "We offer flexible pricing tiers designed to scale with your business needs, from starter plans for individual traders to enterprise solutions for large organizations."
+            "question": "What does 'governed by a Living Constitution' mean?",
+            "answer": "Every feature in MADMall operates under The Living Constitution — a formal governance document with 5 Articles covering your rights (safety, accessibility, dignity, clarity, truth), how code is written, why features exist, who has authority, and how the system learns from mistakes. It's real governance, not marketing."
           },
           {
-            "question": "What kind of support do you provide?",
-            "answer": "Our dedicated support team is available 24/7 through multiple channels including live chat, email, and phone. We also provide extensive documentation and training resources."
+            "question": "How can I get involved?",
+            "answer": "MADMall is being built in public. We're training Black women with Graves' disease to participate at every level — from design to governance to management. Follow our journey, join the community when we launch, or reach out to learn about co-creation opportunities."
           }
         ]
       },
       "cta": {
-        "title": "Start Your Business Transformation",
-        "description": "Join thousands of forward-thinking businesses who have already modernized their operations. Our platform offers the tools, support, and efficiency you need to succeed in today's competitive market. Get started in minutes."
+        "title": "A Space Designed for Us, By Us",
+        "description": "MADMall is being built with the community it serves. Every decision is governed by constitutional principles that ensure your safety, dignity, and voice are never an afterthought. This is what it looks like when the system is designed for you from the start."
       }
     },
     "blog": {
       "meta": {
-        "title": "Blog",
-        "description": "Thoughts, ideas, and opinions."
+        "title": "Stories",
+        "description": "Voices, journeys, and the story of building MADMall."
       }
     },
     "contact": {
       "meta": {
-        "title": "Let's Talk About Your Business",
-        "description": "Schedule a consultation with our team to discuss how we can help streamline your operations and drive growth for your business."
+        "title": "Connect With MADMall",
+        "description": "Whether you're a Black woman with Graves' disease, a potential collaborator, or someone who believes in this mission — we want to hear from you."
       },
       "hero": {
         "benefits": [
           {
-            "title": "Personalized Consultation",
-            "description": "Get tailored solutions and expert advice specific to your business needs."
+            "title": "Community First",
+            "description": "Join a growing community of women who understand your journey and want to build something beautiful together."
           },
           {
-            "title": "Seamless Integration",
-            "description": "We seamlessly integrate with your existing systems to ensure a smooth transition and minimal disruption."
+            "title": "Co-Creation Opportunities",
+            "description": "We're training Black women with Graves' disease to help design, govern, and manage the platform."
           },
           {
-            "title": "Expert Guidance",
-            "description": "Our team of experts will guide you through the process, ensuring you get the most out of our platform."
+            "title": "Constitutional Governance",
+            "description": "Every interaction with MADMall is governed by our Living Constitution — your safety and dignity are non-negotiable."
           }
         ],
         "form": {
-          "title": "Book a meeting",
-          "date": "Date",
+          "title": "Get in touch",
+          "date": "Preferred date",
           "firstName": "First name",
           "lastName": "Last name",
-          "resume": "Upload resume",
-          "cta": "Book the meeting"
+          "resume": "Share your story",
+          "cta": "Connect with us"
         }
       }
     }

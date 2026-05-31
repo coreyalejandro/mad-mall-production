@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SANCTUARY | Vellum Clinical</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=JetBrains+Mono:wght@200;500&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+    :root {
+      --vellum: #fcfaf2;
+      --vellum-trans: rgba(252, 250, 242, 0.75);
+      --ink: #141414;
+      --soul-gold: #b38b4d;
+      --terracotta: #a65d45;
+      --clinical-teal: #4b6a6d;
+      --diffusion-blur: 18px;
+      --monolithic-shadow:
+        20px 20px 60px rgba(0, 0, 0, 0.08), -10px -10px 40px
+        rgba(255, 255, 255, 0.8);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: crosshair;
+    }
+
+    body {
+      background-color: #e5e0d5;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3ExternalIcon%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    /* Vellum Diffusion Layers */
+    .vellum-layer {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 20% 30%,
+          rgba(179, 139, 77, 0.05),
+          transparent
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(75, 106, 109, 0.05),
+          transparent
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      display: grid;
+      grid-template-columns: 120px 1fr 380px;
+      gap: 2rem;
+      padding: 2rem;
+      z-index: 2;
+      height: 100vh;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    /* Navigation - Monolithic Vertical Stack */
+    nav {
+      background: var(--vellum-trans);
+      backdrop-filter: blur(var(--diffusion-blur));
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem 0;
+      align-items: center;
+      border-radius: 60px;
+      box-shadow: var(--monolithic-shadow);
+      animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav-item {
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--ink);
+      opacity: 0.4;
+      transition: 0.4s;
+      margin: 1rem 0;
+    }
+
+    .nav-item:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+      color: var(--terracotta);
+    }
+
+    /* Main Stage */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero {
+      background: var(--vellum-trans);
+      backdrop-filter: blur(var(--diffusion-blur));
+      padding: 4rem;
+      border-radius: 40px;
+      box-shadow: var(--monolithic-shadow);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle,
+        rgba(179, 139, 77, 0.1) 0%,
+        transparent 50%
+      );
+      animation: pulse 15s infinite alternate;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      font-weight: 700;
+      mix-blend-mode: multiply;
+    }
+
+    .subtitle {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: var(--terracotta);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Data Viz Section */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      flex-grow: 1;
+    }
+
+    .viz-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 30px;
+      padding: 2rem;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .viz-card:hover {
+      background: var(--vellum);
+      transform: translateY(-5px);
+    }
+
+    .viz-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+      opacity: 0.6;
+    }
+
+    .chart-bar-container {
+      display: flex;
+      align-items: flex-end;
+      height: 150px;
+      gap: 10px;
+    }
+
+    .bar {
+      flex: 1;
+      background: var(--ink);
+      min-height: 20px;
+      border-radius: 4px 4px 0 0;
+      transition: height 1s ease-in-out;
+      position: relative;
+    }
+
+    .bar::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+    }
+
+    .bar.gold {
+      background: var(--soul-gold);
+    }
+    .bar.teal {
+      background: var(--clinical-teal);
+    }
+
+    /* Sidebar - The Wellness Concierge */
+    .concierge {
+      background: var(--ink);
+      color: var(--vellum);
+      border-radius: 60px;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+      animation: slideInRight 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(252, 250, 242, 0.3);
+      border-radius: 100px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .menu-list {
+      list-style: none;
+    }
+
+    .menu-list li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(252, 250, 242, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .menu-list li:hover {
+      padding-left: 1rem;
+      color: var(--soul-gold);
+    }
+
+    .menu-list li span:last-child {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.1;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0.2;
+      }
+    }
+
+    .soul-food-tag {
+      background: var(--terracotta);
+      color: white;
+      padding: 2px 8px;
+      font-size: 10px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--vellum);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--soul-gold);
+      border-radius: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="vellum-layer"></div>
+
+    <div class="container">
+      <!-- Vertical Monolithic Nav -->
+      <nav>
+        <div class="logo">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="40" height="40" rx="20" fill="black"/>
+            <circle cx="20" cy="20" r="8" stroke="#b38b4d" stroke-width="2"/>
+          </svg>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <a href="#" class="nav-item">Archive</a>
+          <a href="#" class="nav-item">Atelier</a>
+          <a href="#" class="nav-item">The Clinic</a>
+          <a href="#" class="nav-item">Lounge</a>
+        </div>
+        <div class="footer-dot">●</div>
+      </nav>
+
+      <!-- Main Content Hub -->
+      <main>
+        <section class="hero">
+          <div class="subtitle">Home Away From Home / Harlem 02:44 AM</div>
+          <h1>
+            The
+            <br>
+            Sanctuary
+          </h1>
+          <p
+            style="margin-top: 2rem; max-width: 500px; line-height: 1.6; opacity: 0.7; font-size: 1.1rem;"
+          >
+            A soft landing for the weary soul. Precision metabolic tracking
+            meets the warmth of a Southern parlor. Rest, sister. You’re home.
+          </p>
+        </section>
+
+        <div class="data-grid">
+          <div class="viz-card">
+            <span class="viz-label">Metabolic Equilibrium (T4/TSH)</span>
+            <div class="chart-bar-container">
+              <div class="bar teal" style="height: 40%;"></div>
+              <div class="bar" style="height: 65%;"></div>
+              <div class="bar gold" style="height: 85%;"></div>
+              <div class="bar" style="height: 50%;"></div>
+              <div class="bar teal" style="height: 75%;"></div>
+              <div class="bar" style="height: 90%;"></div>
+            </div>
+            <div
+              style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; font-size: 0.8rem;"
+            >
+              STATUS:
+              <span style="color: var(--clinical-teal)">STABILIZING</span>
+            </div>
+          </div>
+
+          <div
+            class="viz-card"
+            style="background: var(--soul-gold); color: white;"
+          >
+            <span class="viz-label" style="color: white; opacity: 0.9;"
+              >Evening Soul Session</span
+            >
+            <div
+              style="font-size: 1.5rem; font-weight: 300; margin-bottom: 1rem;"
+            >
+              "Laughter as Medicine: The Comedy Club Stream"
+            </div>
+            <div
+              style="font-family: 'JetBrains Mono'; font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.4); display: inline-block; padding: 5px 12px; border-radius: 20px;"
+            >
+              LIVE FROM L.A. • 08:00 PM
+            </div>
+            <div
+              style="position: absolute; bottom: 2rem; right: 2rem; font-size: 3rem; opacity: 0.2;"
+            >
+              ♫
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="viz-card"
+          style="grid-column: span 2; display: flex; align-items: center; justify-content: space-between;"
+        >
+          <div>
+            <span class="viz-label">The Kitchen • Soul Food Takeout</span>
+            <h3 style="font-size: 1.8rem; text-transform: uppercase;">
+              Braised Collards & Wild Sea Bass
+            </h3>
+          </div>
+          <button
+            style="background: var(--ink); color: white; border: none; padding: 1rem 2rem; border-radius: 100px; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;"
+          >
+            Order Ritual Meal
+          </button>
+        </div>
+      </main>
+
+      <!-- Right Side: Luxury Concierge -->
+      <aside class="concierge">
+        <div>
+          <span class="status-pill">● CLINICAL GATEWAY</span>
+          <h2 style="font-size: 2rem; font-weight: 300; margin-bottom: 1rem;">
+            Welcome Back, Maya.
+          </h2>
+          <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.4;">
+            Your thyroid markers are showing improvement this week. The Southern
+            Hospitality staff has reserved your favorite corner by the jazz
+            stream.
+          </p>
+        </div>
+
+        <ul class="menu-list">
+          <li>
+            <span>The Shop: Silk Wraps</span>
+            <span>$120</span>
+          </li>
+          <li>
+            <span>Jazz Lounge: Live Sax</span>
+            <span>LIVE</span>
+          </li>
+          <li>
+            <span>Doctor's Consult</span>
+            <span>10:00 AM</span>
+          </li>
+          <li>
+            <span>Guided Meditation</span>
+            <span>20 MIN</span>
+          </li>
+          <li>
+            <span
+              >Takeout: Sweet Potato Pie<span class="soul-food-tag"
+                >HOT</span
+              ></span
+            >
+            <span>ORDER</span>
+          </li>
+        </ul>
+
+        <div
+          style="margin-top: auto; border-top: 1px solid rgba(252,250,242,0.1); padding-top: 2rem;"
+        >
+          <div style="display: flex; gap: 1rem;">
+            <div
+              style="width: 50px; height: 50px; background: #333; border-radius: 15px; background-image: url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=100&q=80'); background-size: cover;"
+            ></div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem;">
+                Ivy League Clinic
+              </div>
+              <div
+                style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; opacity: 0.5;"
+              >
+                DR. A. OKORO • ON CALL
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+    "use strict";
+    // Subtle interaction for the data bars
+    for (const bar of document.querySelectorAll(".bar")) {
+      bar.addEventListener("mouseenter", () => {
+        bar.style.filter = "brightness(1.5)";
+      });
+      bar.addEventListener("mouseleave", () => {
+        bar.style.filter = "brightness(1)";
+      });
+    }
+
+    // Slow parallax-ish effect for the vellum layers
+    window.addEventListener("mousemove", (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      document.querySelector(".hero").style.transform =
+        `translate(${x * 5}px, ${y * 5}px)`;
+    });
+    </script>
+  </body>
+</html>

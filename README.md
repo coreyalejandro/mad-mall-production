@@ -1,139 +1,102 @@
-# ▲ / next-forge
+# MADMall
 
-**Production-grade Turborepo template for Next.js apps.**
+A virtual all-in-one: luxury mall, jazz and comedy club, wellness center, wholistic teaching clinic (non-medical), and research and development lab for Black women living with Graves' disease.
 
-<div>
-  <img src="https://img.shields.io/npm/dy/next-forge" alt="" />
-  <img src="https://img.shields.io/npm/v/next-forge" alt="" />
-  <img src="https://img.shields.io/github/license/vercel/next-forge" alt="" />
-</div>
+Not one of those things. All of them. Under one roof.
 
-## Overview
+---
 
-[next-forge](https://github.com/vercel/next-forge) is a production-grade [Turborepo](https://turborepo.com) template for [Next.js](https://nextjs.org/) apps. It's designed to be a comprehensive starting point for building SaaS applications, providing a solid, opinionated foundation with minimal configuration required.
+## What MADMall Is
 
-Built on a decade of experience building web applications, next-forge balances speed and quality to help you ship thoroughly-built products faster.
+Black women are disproportionately affected by Graves' disease. The systems that should protect them were not designed for them.
 
-### Philosophy
+MADMall is the answer that those systems never built — a single destination where a Black woman with Graves' disease can shop luxury goods curated for her body and her life, catch live jazz or a comedy set, work on her wellness, learn everything her doctor didn't tell her, and contribute to research that will help women who come after her. All in one place. All on her terms.
 
-next-forge is built around five core principles:
+This is not a portal. It is not a resource list. It is a place.
 
-- **Fast** — Quick to build, run, deploy, and iterate on
-- **Cheap** — Free to start with services that scale with you
-- **Opinionated** — Integrated tooling designed to work together
-- **Modern** — Latest stable features with healthy community support
-- **Safe** — End-to-end type safety and robust security posture
+---
 
-## Demo
+## The Building
 
-Experience next-forge in action:
+| Room | What It Is |
+|------|-----------|
+| Sanctuary | The entrance. Grounding, orientation, arrival. |
+| The Mall | Luxury retail curated for Black women — every size, every hue, every shape represented. |
+| Jazz & Comedy Club | Live jazz and comedy, together. Culture and joy as medicine. |
+| Wellness Center | Movement, breath, rest, and self-care practices built around chronic illness. |
+| Teaching Clinic | Wholistic, non-medical education — everything about Graves' disease that the appointment doesn't cover. |
+| Research Lab | Active R&D. Data, studies, findings, and the work of building evidence for this community. |
+| The Commons | Sisterhood. Community space for connection, conversation, and mutual support. |
 
-- [Web](https://demo.next-forge.com) — Marketing website
-- [App](https://app.demo.next-forge.com) — Main application
-- [Storybook](https://storybook.demo.next-forge.com) — Component library
-- [API](https://api.demo.next-forge.com/health) — API health check
+Every room is part of the same building. You do not leave MADMall to go from the mall to the clinic to the lab. It is all-in-one by design.
 
-## Features
+---
 
-next-forge comes with batteries included:
+## Why All-in-One Matters
 
-### Apps
+A Black woman with Graves' disease is navigating fatigue, brain fog, medical gaslighting, financial pressure, and social isolation — often at the same time. She should not have to maintain five different apps, five different accounts, five different contexts just to take care of herself.
 
-- **Web** — Marketing site built with Tailwind CSS and TWBlocks
-- **App** — Main application with authentication and database integration
-- **API** — RESTful API with health checks and monitoring
-- **Docs** — Documentation site powered by Mintlify
-- **Email** — Email templates with React Email
-- **Storybook** — Component development environment
+MADMall gives her one place. One login. One community. Everything she needs, roof over her head.
 
-### Packages
+---
 
-- **Authentication** — Powered by [Clerk](https://clerk.com)
-- **Database** — Type-safe ORM with migrations
-- **Design System** — Comprehensive component library with dark mode
-- **Payments** — Subscription management via [Stripe](https://stripe.com)
-- **Email** — Transactional emails via [Resend](https://resend.com)
-- **Analytics** — Web ([Google Analytics](https://developers.google.com/analytics)) and product ([Posthog](https://posthog.com))
-- **Observability** — Error tracking ([Sentry](https://sentry.io)), logging, and uptime monitoring ([BetterStack](https://betterstack.com))
-- **Security** — Application security ([Arcjet](https://arcjet.com)), rate limiting, and secure headers
-- **CMS** — Type-safe content management for blogs and documentation
-- **SEO** — Metadata management, sitemaps, and JSON-LD
-- **AI** — AI integration utilities
-- **Webhooks** — Inbound and outbound webhook handling
-- **Collaboration** — Real-time features with avatars and live cursors
-- **Feature Flags** — Feature flag management
-- **Cron** — Scheduled job management
-- **Storage** — File upload and management
-- **Internationalization** — Multi-language support
-- **Notifications** — In-app notification system
+## Safety Layer
 
-## Getting Started
+Every room carries three safety components — constitutional requirements, not optional features:
 
-### Prerequisites
+- **ExitStrategy** — one-keystroke exit (Shift+Esc), no trace left behind
+- **PanicButton** — immediate access to 988 crisis line, always visible
+- **GroundingReset** — box-breathing ritual (4-4-6), available any time
 
-- Node.js 20+
-- [pnpm](https://pnpm.io) (or npm/yarn/bun)
-- [Stripe CLI](https://docs.stripe.com/stripe-cli) for local webhook testing
+---
 
-### Installation
+## Governance
 
-Create a new next-forge project:
+MADMall operates under [The Living Constitution](https://github.com/coreyalejandro/the-living-constitution). Every feature must trace to a mission goal. The Teaching Clinic is non-medical by constitutional constraint — it does not diagnose, treat, or prescribe. The Research Lab operates with full consent protocols. The mall does not exploit.
+
+| Article | What It Governs |
+|---------|----------------|
+| I — Bill of Rights | Safety, accessibility, dignity, truth in every interaction |
+| II — Execution Law | Immutable data, security enforcement, truth-status discipline |
+| III — Purpose Law | Every feature maps to the mission |
+| IV — Separation of Powers | No agent deploys without human approval |
+| V — Amendment Process | Failures become amendments, not buried |
+
+---
+
+## Design System
+
+ZMUX "Sanctuary" — a vellum clinical aesthetic built for this project.
+
+```
+--soul-gold:      #b38b4d
+--clinical-teal:  #4b6a6d
+--terracotta:     #a65d45
+--vellum:         #fcfaf2
+--ink:            #141414
+```
+
+---
+
+## Stack
+
+- Next.js 15 (App Router, server components first)
+- TypeScript
+- Tailwind CSS v4
+- Turborepo monorepo
+
+---
+
+## Run Locally
 
 ```sh
-npx next-forge@latest init
+pnpm install
+pnpm dev
 ```
 
-### Setup
+MADMall is at `http://localhost:3001/mall`
 
-1. Configure your environment variables
-2. Set up required service accounts (Clerk, Stripe, Resend, etc.)
-3. Run the development server
-
-For detailed setup instructions, read the [documentation](https://www.next-forge.com/docs).
-
-## Structure
-
-next-forge uses a monorepo structure managed by Turborepo:
-
-```
-next-forge/
-├── apps/           # Deployable applications
-│   ├── web/        # Marketing website (port 3001)
-│   ├── app/        # Main application (port 3000)
-│   ├── api/        # API server
-│   ├── docs/       # Documentation
-│   ├── email/      # Email templates
-│   └── storybook/  # Component library
-└── packages/       # Shared packages
-    ├── design-system/
-    ├── database/
-    ├── auth/
-    └── ...
-```
-
-Each app is self-contained and independently deployable. Packages are shared across apps for consistency and maintainability.
-
-## Documentation
-
-Full documentation is available at [next-forge.com/docs](https://www.next-forge.com/docs), including:
-
-- Detailed setup guides
-- Package documentation
-- Migration guides for swapping providers
-- Deployment instructions
-- Examples and recipes
-
-## Contributing
-
-We welcome contributions! See the [contributing guide](https://github.com/vercel/next-forge/blob/main/.github/CONTRIBUTING.md) for details.
-
-## Contributors
-
-<a href="https://github.com/vercel/next-forge/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=vercel/next-forge" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
+---
 
 ## License
 

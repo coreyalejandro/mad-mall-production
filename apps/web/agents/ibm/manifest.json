@@ -1,0 +1,46 @@
+{
+  "source": "Agents-of-IBM.zip",
+  "imported_at": "2026-01-11",
+  "items": [
+    {
+      "filename": "Agentic Design Patterns in LangGraph-v1.ipynb",
+      "path": "agents/ibm/raw/ (local-only) Agentic Design Patterns in LangGraph-v1.ipynb"
+    },
+    {
+      "filename": "Build a Smarter Search with LangChain Context Retrieval.ipynb",
+      "path": "agents/ibm/raw/ (local-only) Build a Smarter Search with LangChain Context Retrieval.ipynb"
+    },
+    {
+      "filename": "Explore Advanced Retrievers in LlamaIndex.ipynb",
+      "path": "agents/ibm/raw/ (local-only) Explore Advanced Retrievers in LlamaIndex.ipynb"
+    },
+    {
+      "filename": "LLM-Powered Data Science-v1 2.ipynb",
+      "path": "agents/ibm/raw/ (local-only) LLM-Powered Data Science-v1 2.ipynb"
+    },
+    {
+      "filename": "Manual Tool-Calling Agent.ipynb",
+      "path": "agents/ibm/raw/ (local-only) Manual Tool-Calling Agent.ipynb"
+    },
+    {
+      "filename": "ReAct.ipynb",
+      "path": "agents/ibm/raw/ (local-only) ReAct.ipynb"
+    },
+    {
+      "filename": "Text-to-chart in Jupyter notebook Visualization Agent.ipynb",
+      "path": "agents/ibm/raw/ (local-only) Text-to-chart in Jupyter notebook Visualization Agent.ipynb"
+    },
+    {
+      "filename": "books_advanced_search.py",
+      "path": "agents/ibm/raw/ (local-only) books_advanced_search.py"
+    },
+    {
+      "filename": "similarity_search.py",
+      "path": "agents/ibm/raw/ (local-only) similarity_search.py"
+    }
+  ],
+  "notes": [
+    "Raw IBM artifacts are not committed (local-only).",
+    "Reason: push protection flagged an embedded API key inside a notebook; treat as unsafe to publish."
+  ]
+}

@@ -36,3 +36,23 @@
   content: attr(title);
   @apply inline-block text-muted-foreground text-right mb-6 text-sm;
 }
+
+/* MADMall construction-site helpers */
+
+.madmall-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: 0 0;
+}
+
+.madmall-caution {
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(250, 204, 21, 0.18) 0px,
+    rgba(250, 204, 21, 0.18) 14px,
+    rgba(0, 0, 0, 0) 14px,
+    rgba(0, 0, 0, 0) 28px
+  );
+}
