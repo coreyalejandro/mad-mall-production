@@ -7,78 +7,97 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --success: oklch(50.8% 0.118 165.612);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* MADMall Vellum Clinical — from ZMUX_MAD_MALL.html */
+  /* Core ZMUX tokens */
+  --vellum: #fcfaf2;
+  --vellum-trans: rgba(252, 250, 242, 0.75);
+  --ink: #141414;
+  --soul-gold: #b38b4d;
+  --terracotta: #a65d45;
+  --clinical-teal: #4b6a6d;
+  --body-bg: #e5e0d5;
+  --diffusion-blur: 18px;
+  --monolithic-shadow: 20px 20px 60px rgba(0, 0, 0, 0.08), -10px -10px 40px rgba(255, 255, 255, 0.8);
+  --concierge-glow: 0 40px 100px rgba(0, 0, 0, 0.3);
+
+  /* ShadCN mapping to ZMUX palette */
+  --background: #e5e0d5;
+  --foreground: #141414;
+  --card: #fcfaf2;
+  --card-foreground: #141414;
+  --popover: #fcfaf2;
+  --popover-foreground: #141414;
+  --primary: #a65d45;
+  --primary-foreground: #fcfaf2;
+  --secondary: #f0ebd6;
+  --secondary-foreground: #141414;
+  --muted: #f0ebd6;
+  --muted-foreground: #6a8a8e;
+  --accent: #b38b4d;
+  --accent-foreground: #141414;
+  --destructive: #a65d45;
+  --destructive-foreground: #fcfaf2;
+  --success: #4b6a6d;
+  --border: rgba(255, 255, 255, 0.4);
+  --input: rgba(255, 255, 255, 0.4);
+  --ring: #b38b4d;
+  --chart-1: #a65d45;
+  --chart-2: #4b6a6d;
+  --chart-3: #b38b4d;
+  --chart-4: #141414;
+  --chart-5: #6a8a8e;
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: rgba(252, 250, 242, 0.75);
+  --sidebar-foreground: #141414;
+  --sidebar-primary: #a65d45;
+  --sidebar-primary-foreground: #fcfaf2;
+  --sidebar-accent: #f0ebd6;
+  --sidebar-accent-foreground: #141414;
+  --sidebar-border: rgba(255, 255, 255, 0.4);
+  --sidebar-ring: #b38b4d;
+
+  /* Construction overlay */
+  --construction-yellow: #FFD700;
+  --construction-black: #1a1a1a;
 
   --font-weight-bold: 700;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --success: oklch(50.8% 0.118 165.612);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* MADMall Dark — The Concierge (dark ink palette from ZMUX) */
+  --background: #141414;
+  --foreground: #fcfaf2;
+  --card: #1e1e1e;
+  --card-foreground: #fcfaf2;
+  --popover: #1e1e1e;
+  --popover-foreground: #fcfaf2;
+  --primary: #b38b4d;
+  --primary-foreground: #141414;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #fcfaf2;
+  --muted: #2a2a2a;
+  --muted-foreground: rgba(252, 250, 242, 0.6);
+  --accent: #a65d45;
+  --accent-foreground: #fcfaf2;
+  --destructive: #a65d45;
+  --destructive-foreground: #fcfaf2;
+  --success: #4b6a6d;
+  --border: rgba(252, 250, 242, 0.1);
+  --input: rgba(252, 250, 242, 0.1);
+  --ring: #b38b4d;
+  --chart-1: #b38b4d;
+  --chart-2: #4b6a6d;
+  --chart-3: #a65d45;
+  --chart-4: rgba(252, 250, 242, 0.4);
+  --chart-5: #6a8a8e;
+  --sidebar: #1e1e1e;
+  --sidebar-foreground: #fcfaf2;
+  --sidebar-primary: #b38b4d;
+  --sidebar-primary-foreground: #141414;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #fcfaf2;
+  --sidebar-border: rgba(252, 250, 242, 0.1);
+  --sidebar-ring: #b38b4d;
 }
 
 @theme inline {

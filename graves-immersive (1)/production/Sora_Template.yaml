@@ -1,0 +1,24 @@
+# Canonical Sora parameter template (swap prompt, seed, duration per scene)
+prompt: "<paste scene prompt>"
+negative_prompt: "no male bodies, no white skin, no sexualization, no nudity, no horror, no gore, no needles, no restraints, no hospital bed, no crying, no fear, no emaciation, no BMI extremes, no cheap CGI, no glitch, no text panels over skin"
+seed: 123456
+duration_seconds: 14
+fps: 24
+resolution: "4096x2304"
+guidance_strength: 7.5
+variation_amount: 0
+same_actor: "Ama-01"   # include when protagonist appears
+keep_character: true   # include when protagonist appears
+camera:
+  angular_velocity_max_deg_s: 20
+  forward_velocity_m_s: 0.8
+  acceleration_smoothing: high
+lighting:
+  wb_kelvin: 5000
+  key_fill_ratio_stops: 1.5
+  rim_warm: true
+color:
+  palette_lock: ["amber","crimson","cyan","violet","sunrise gold"]
+  highlight_rolloff: soft
+accessibility:
+  reduce_motion_variant: true

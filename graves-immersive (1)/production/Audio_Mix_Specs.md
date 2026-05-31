@@ -1,0 +1,12 @@
+# Audio Mix Specs
+- Program loudness: **-16 LUFS integrated**, true peak **≤ -1 dBTP** (ITU-R BS.1770-4)
+- Dialog anchor: ~-3 LU loudness range (stable)
+- Sample rate: **48 kHz**, 24-bit WAV for stems and master
+- Stems delivery: VO, MUSIC, SFX, M&E (Music & Effects)
+- VO processing: de-ess, gentle compression (2:1), HPF ~80 Hz, tame siblings around 6–8 kHz
+- Score palette: warm pads, soft piano; low analog bass for heart; glass plucks for neurons; airy noise + chimes for endocrine flows; sunrise strings for resilience
+- SFX: subtle heartbeat, synapse ticks, tear-film swish; **no horror stings**
+- Room tone: optional -60 dBFS bed for scene transitions
+- Exports:
+  - Masters: ProRes/DNxHR with embedded 2.0 PCM
+  - Web: stereo AAC at 320/192/128 kbps matching HLS renditions
