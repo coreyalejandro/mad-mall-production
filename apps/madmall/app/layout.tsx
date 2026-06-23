@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'MADMall | A Home Away From Home',
   description:
-    'A governed cultural sanctuary for Black women navigating Graves' disease — retail, jazz, comedy, wellness, learning, community, and care.',
+    "A governed cultural sanctuary for Black women navigating Graves' disease — retail, jazz, comedy, wellness, learning, community, and care.",
 }
 
 export default function RootLayout({
