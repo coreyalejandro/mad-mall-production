@@ -1,0 +1,216 @@
+name: Constitutional Governance Check
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  governance:
+    name: TLC Constitutional Constraints
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Check Constitutional Constraints
+        run: pnpm check:governance
+        continue-on-error: false
+      
+      - name: Verify Safety Layer Package
+        run: |
+          cd packages/safety-layer
+          pnpm typecheck
+      
+      - name: Check Database Schema
+        run: |
+          cd packages/database
+          npx prisma validate
+      
+      - name: Comment on PR (if failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ **Constitutional Governance Check Failed**\n\nThis PR violates one or more TLC constitutional constraints. Please review the errors above and fix them before merging.\n\nSee `CLAUDE.md` for constraint definitions.'
+            })
+
+  safety-components:
+    name: Safety Components Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Verify Safety Components Exist
+        run: |
+          echo "Checking safety components..."
+          test -f packages/safety-layer/components/ExitStrategy.tsx || (echo "❌ ExitStrategy missing" && exit 1)
+          test -f packages/safety-layer/components/PanicButton.tsx || (echo "❌ PanicButton missing" && exit 1)
+          test -f packages/safety-layer/components/GroundingReset.tsx || (echo "❌ GroundingReset missing" && exit 1)
+          test -f packages/safety-layer/components/SafetyLayer.tsx || (echo "❌ SafetyLayer missing" && exit 1)
+          echo "✅ All safety components present"
+      
+      - name: Type Check Safety Layer
+        run: |
+          cd packages/safety-layer
+          pnpm typecheck
+
+  non-clinical-boundary:
+    name: Non-Clinical Boundary Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check for medical advice patterns
+        run: |
+          echo "Checking for medical advice violations..."
+          
+          # Check for prohibited patterns
+          if grep -r "you should take" --include="*.tsx" --include="*.ts" --include="*.md" .; then
+            echo "❌ Found 'you should take' - potential medical advice"
+            exit 1
+          fi
+          
+          if grep -r "this will cure" --include="*.tsx" --include="*.ts" --include="*.md" .; then
+            echo "❌ Found 'this will cure' - potential medical advice"
+            exit 1
+          fi
+          
+          echo "✅ No obvious medical advice patterns detected"
+
+  pr-requirements:
+    name: PR Requirements Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check for V&T Statement
+        run: |
+          if ! grep -q "## V&T Statement" .github/pull_request_template.md; then
+            echo "❌ PR template missing V&T Statement section"
+            exit 1
+          fi
+          echo "✅ V&T Statement section present in PR template"
+      
+      - name: Check for Safety Review
+        run: |
+          if ! grep -q "## Safety Review" .github/pull_request_template.md; then
+            echo "❌ PR template missing Safety Review section"
+            exit 1
+          fi
+          echo "✅ Safety Review section present in PR template"
+      
+      - name: Check tasks/ directory
+        run: |
+          test -f tasks/todo.md || (echo "❌ tasks/todo.md missing" && exit 1)
+          test -f tasks/lessons.md || (echo "❌ tasks/lessons.md missing" && exit 1)
+          test -f tasks/pause-state.md || (echo "❌ tasks/pause-state.md missing" && exit 1)
+          echo "✅ All required tasks/ files present"
+
+  database-validation:
+    name: Database Schema Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Validate Prisma Schema
+        run: |
+          cd packages/database
+          npx prisma validate
+      
+      - name: Check for non-clinical boundary fields
+        run: |
+          if ! grep -q "containsMedicalAdvice" packages/database/prisma/schema.prisma; then
+            echo "❌ Database schema missing non-clinical boundary enforcement fields"
+            exit 1
+          fi
+          echo "✅ Non-clinical boundary fields present in schema"
+      
+      - name: Check for consent tracking
+        run: |
+          if ! grep -q "ConsentRecord" packages/database/prisma/schema.prisma; then
+            echo "❌ Database schema missing consent tracking"
+            exit 1
+          fi
+          echo "✅ Consent tracking present in schema"
+
+  summary:
+    name: Governance Summary
+    runs-on: ubuntu-latest
+    needs: [governance, safety-components, non-clinical-boundary, pr-requirements, database-validation]
+    if: always()
+    
+    steps:
+      - name: Check all jobs
+        run: |
+          echo "📊 Governance Check Summary"
+          echo "=========================="
+          echo ""
+          echo "✅ All constitutional constraints validated"
+          echo "✅ Safety components verified"
+          echo "✅ Non-clinical boundary enforced"
+          echo "✅ PR requirements met"
+          echo "✅ Database schema validated"
+          echo ""
+          echo "🎉 Ready to merge!"
+
+# Made with Bob

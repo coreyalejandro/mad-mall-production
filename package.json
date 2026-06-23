@@ -8,7 +8,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "dev:madmall": "turbo dev --filter=madmall",
+    "build:madmall": "turbo build --filter=madmall",
     "check": "npx ultracite@latest check",
+    "check:governance": "tsx scripts/check-governance.ts",
     "fix": "npx ultracite@latest fix",
     "test": "turbo test",
     "analyze": "turbo analyze",
@@ -17,7 +20,9 @@
     "bump-deps": "npx npm-check-updates --deep -u -x recharts && pnpm install",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system",
     "migrate": "cd packages/database && npx prisma format && npx prisma generate && npx prisma db push",
-    "clean": "git clean -xdf node_modules"
+    "seed": "cd packages/database && tsx prisma/seed.ts",
+    "clean": "git clean -xdf node_modules",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@auto-it/first-time-contributor": "^11.3.6",

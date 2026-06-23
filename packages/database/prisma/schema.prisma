@@ -1,19 +1,388 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// MADMall Database Schema
+// Implements TLC governance with non-clinical boundary enforcement
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated"
 }
 
 datasource db {
   provider     = "postgresql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-// This is a stub model.
-// Delete it and add your own Prisma models.
-model Page {
-  id   Int    @id @default(autoincrement())
-  name String
+// ============================================================================
+// USER & AUTHENTICATION
+// ============================================================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  profile       Profile?
+  sessions      Session[]
+  accounts      Account[]
+  posts         Post[]
+  comments      Comment[]
+  eventRsvps    EventRSVP[]
+  consentRecords ConsentRecord[]
+  moderationActions ModerationLog[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================================
+// USER PROFILES
+// ============================================================================
+
+model Profile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  displayName     String?
+  bio             String?
+  avatarUrl       String?
+  pronouns        String?
+  diagnosisDate   DateTime?
+  location        String?
+
+  // Privacy settings
+  profileVisibility String @default("private") // private, friends, public
+  showDiagnosis     Boolean @default(false)
+  showLocation      Boolean @default(false)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@map("profiles")
+}
+
+// ============================================================================
+// CONTENT & COMMUNITY
+// ============================================================================
+
+model Post {
+  id              String   @id @default(cuid())
+  authorId        String
+  author          User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  content         String
+  contentWarning  String?
+  room            String   // retail, jazz, comedy, wellness, learning, commons, care
+
+  // Non-clinical boundary enforcement (TLC Constraint #1)
+  containsMedicalAdvice Boolean @default(false)
+  medicalAdviceFlags    String[] // detected phrases that triggered flags
+  reviewRequired        Boolean  @default(false)
+  reviewedAt            DateTime?
+  reviewedBy            String?
+
+  // Moderation (TLC Constraint #5 - Cultural Safety)
+  moderationStatus String @default("pending") // pending, approved, flagged, removed
+  moderatedAt      DateTime?
+  moderatorId      String?
+
+  // Engagement
+  likeCount       Int      @default(0)
+  commentCount    Int      @default(0)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  comments        Comment[]
+  moderationLogs  ModerationLog[]
+
+  @@index([authorId])
+  @@index([room])
+  @@index([moderationStatus])
+  @@index([createdAt])
+  @@map("posts")
+}
+
+model Comment {
+  id              String   @id @default(cuid())
+  postId          String
+  post            Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId        String
+  author          User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  content         String
+
+  // Non-clinical boundary enforcement
+  containsMedicalAdvice Boolean @default(false)
+  medicalAdviceFlags    String[]
+  reviewRequired        Boolean  @default(false)
+
+  // Moderation
+  moderationStatus String @default("pending")
+  moderatedAt      DateTime?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([postId])
+  @@index([authorId])
+  @@map("comments")
+}
+
+// ============================================================================
+// MODERATION & SAFETY
+// ============================================================================
+
+model ModerationLog {
+  id              String   @id @default(cuid())
+  contentId       String
+  contentType     String   // post, comment, profile
+  action          String   // flag, approve, remove, warn
+  reason          String?
+  details         String?  // JSON string with additional context
+
+  moderatorId     String?
+  moderator       User?    @relation(fields: [moderatorId], references: [id])
+  automated       Boolean  @default(false)
+  aiModel         String?  // if automated, which model
+
+  // Link to content
+  post            Post?    @relation(fields: [contentId], references: [id])
+
+  createdAt       DateTime @default(now())
+
+  @@index([contentId])
+  @@index([contentType])
+  @@index([moderatorId])
+  @@index([createdAt])
+  @@map("moderation_logs")
+}
+
+// ============================================================================
+// EVENTS & EXPERIENCES
+// ============================================================================
+
+model Event {
+  id              String   @id @default(cuid())
+  title           String
+  description     String
+  eventType       String   // jazz, comedy, wellness, learning
+  room            String   // which room hosts this
+
+  startTime       DateTime
+  endTime         DateTime
+  capacity        Int?
+  isVirtual       Boolean  @default(true)
+  meetingUrl      String?
+
+  // Consent (TLC Constraint #2)
+  requiresRsvp    Boolean  @default(true)
+  recordingConsent Boolean @default(false) // will this be recorded?
+
+  createdById     String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  rsvps           EventRSVP[]
+
+  @@index([eventType])
+  @@index([startTime])
+  @@map("events")
+}
+
+model EventRSVP {
+  id              String   @id @default(cuid())
+  eventId         String
+  event           Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status          String   @default("attending") // attending, maybe, not_attending
+  consentToRecord Boolean  @default(false)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([eventId, userId])
+  @@index([eventId])
+  @@index([userId])
+  @@map("event_rsvps")
+}
+
+// ============================================================================
+// SERVICE DIRECTORY
+// ============================================================================
+
+model Provider {
+  id              String   @id @default(cuid())
+  name            String
+  specialty       String
+  description     String
+  category        String   // endocrinologist, therapist, nutritionist, etc.
+
+  // Verification (TLC - provider safety)
+  verified        Boolean  @default(false)
+  verifiedAt      DateTime?
+  verifiedBy      String?
+  verificationNotes String?
+
+  // Contact
+  email           String?
+  phone           String?
+  website         String?
+  address         String?
+
+  // Availability
+  acceptingPatients Boolean @default(true)
+  insuranceAccepted String[] // list of insurance providers
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([category])
+  @@index([verified])
+  @@map("providers")
+}
+
+// ============================================================================
+// CONSENT & DATA GOVERNANCE (TLC Constraint #2)
+// ============================================================================
+
+model ConsentRecord {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  consentType     String   // data_collection, research, communication, recording
+  purpose         String   // specific purpose of data collection
+  granted         Boolean
+  version         String   // consent form version
+
+  // Revocability
+  grantedAt       DateTime @default(now())
+  revokedAt       DateTime?
+  revokedReason   String?
+
+  // Audit trail
+  ipAddress       String?
+  userAgent       String?
+
+  @@index([userId])
+  @@index([consentType])
+  @@index([granted])
+  @@map("consent_records")
+}
+
+// ============================================================================
+// RESEARCH & DATA (TLC Constraint #3 - ML Claims Validation)
+// ============================================================================
+
+model ResearchDataPoint {
+  id              String   @id @default(cuid())
+  userId          String?  // nullable for anonymized data
+
+  dataType        String   // symptom, lab_result, treatment_response
+  category        String
+  value           String   // JSON string
+  timestamp       DateTime
+
+  // Consent tracking
+  consentId       String?
+  anonymized      Boolean  @default(true)
+
+  // Validation (TLC Constraint #3)
+  validated       Boolean  @default(false)
+  validatedAt     DateTime?
+  validatedBy     String?
+
+  createdAt       DateTime @default(now())
+
+  @@index([dataType])
+  @@index([category])
+  @@index([timestamp])
+  @@map("research_data_points")
+}
+
+// ============================================================================
+// SYSTEM & AUDIT
+// ============================================================================
+
+model AuditLog {
+  id              String   @id @default(cuid())
+  userId          String?
+  action          String   // login, logout, data_access, consent_change, etc.
+  resource        String   // what was accessed/modified
+  resourceId      String?
+  details         String?  // JSON string
+  ipAddress       String?
+  userAgent       String?
+
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model FeatureFlag {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  description     String?
+  enabled         Boolean  @default(false)
+  rolloutPercent  Int      @default(0) // 0-100
+
+  // TLC Article III - Purpose Law
+  purpose         String   // which mission goal does this serve?
+  evidenceLink    String?  // link to evidence/research
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("feature_flags")
 }
