@@ -9,28 +9,43 @@ const pages = appFolders
   .filter((folder) => !folder.name.startsWith("_"))
   .filter((folder) => !folder.name.startsWith("("))
   .map((folder) => folder.name);
-const blogs = (await blog.getPosts()).map((post) => post._slug);
-const legals = (await legal.getPosts()).map((post) => post._slug);
+
+// Gracefully degrade when BASEHUB_TOKEN is absent (e.g. local builds without CMS creds)
+let blogs: string[] = [];
+let legals: string[] = [];
+try {
+  blogs = (await blog.getPosts()).map((post) => post._slug);
+} catch {
+  // no token — sitemap will omit blog entries
+}
+try {
+  legals = (await legal.getPosts()).map((post) => post._slug);
+} catch {
+  // no token — sitemap will omit legal entries
+}
+
 const protocol = env.VERCEL_PROJECT_PRODUCTION_URL?.startsWith("https")
   ? "https"
   : "http";
-const url = new URL(`${protocol}://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
+const baseUrl = env.VERCEL_PROJECT_PRODUCTION_URL
+  ? new URL(`${protocol}://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
+  : new URL("http://localhost:3000");
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => [
   {
-    url: new URL("/", url).href,
+    url: new URL("/", baseUrl).href,
     lastModified: new Date(),
   },
   ...pages.map((page) => ({
-    url: new URL(page, url).href,
+    url: new URL(page, baseUrl).href,
     lastModified: new Date(),
   })),
-  ...blogs.map((blog) => ({
-    url: new URL(`blog/${blog}`, url).href,
+  ...blogs.map((slug) => ({
+    url: new URL(`blog/${slug}`, baseUrl).href,
     lastModified: new Date(),
   })),
-  ...legals.map((legal) => ({
-    url: new URL(`legal/${legal}`, url).href,
+  ...legals.map((slug) => ({
+    url: new URL(`legal/${slug}`, baseUrl).href,
     lastModified: new Date(),
   })),
 ];

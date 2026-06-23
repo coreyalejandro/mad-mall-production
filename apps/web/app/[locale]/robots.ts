@@ -4,7 +4,9 @@ import { env } from "@/env";
 const protocol = env.VERCEL_PROJECT_PRODUCTION_URL?.startsWith("https")
   ? "https"
   : "http";
-const url = new URL(`${protocol}://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
+const baseUrl = env.VERCEL_PROJECT_PRODUCTION_URL
+  ? new URL(`${protocol}://${env.VERCEL_PROJECT_PRODUCTION_URL}`)
+  : new URL("http://localhost:3000");
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -12,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: new URL("/sitemap.xml", url.href).href,
+    sitemap: new URL("/sitemap.xml", baseUrl.href).href,
   };
 }
