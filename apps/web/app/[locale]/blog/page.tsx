@@ -1,4 +1,5 @@
 import { blog } from "@repo/cms";
+import type { PostMeta } from "@repo/cms";
 import { Feed } from "@repo/cms/components/feed";
 import { Image } from "@repo/cms/components/image";
 import { cn } from "@repo/design-system/lib/utils";
@@ -52,7 +53,7 @@ const BlogIndex = async ({ params }: BlogProps) => {
                   return null;
                 }
 
-                return data.blog.posts.items.map((post, index) => (
+                return data.blog.posts.items.map((post: PostMeta, index: number) => (
                   <Link
                     className={cn(
                       "flex cursor-pointer flex-col gap-4 hover:opacity-75",

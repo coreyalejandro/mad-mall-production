@@ -1,8 +1,11 @@
 import { type ApiData, verifyAccess } from "flags";
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import * as flags from "./index";
 
-export const getFlags = async (request: NextRequest) => {
+// Accept the standard web Request type to avoid NextRequest instance conflicts
+// across pnpm peer-dep variations of next. NextRequest extends Request, so
+// apps/web can pass its NextRequest directly.
+export const getFlags = async (request: Request) => {
   const access = await verifyAccess(request.headers.get("Authorization"));
 
   if (!access) {

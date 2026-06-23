@@ -1,4 +1,5 @@
 import { legal } from "@repo/cms";
+import type { LegalPostMeta } from "@repo/cms";
 import { Feed } from "@repo/cms/components/feed";
 import { Status } from "@repo/observability/status";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { env } from "@/env";
 
 export const Footer = () => (
   <Feed queries={[legal.postsQuery]}>
-    {async ([data]) => {
+    {async ([data]: [{ legalPages: { items: LegalPostMeta[] } }]) => {
       "use server";
 
       const navigationItems = [
@@ -28,7 +29,7 @@ export const Footer = () => (
         {
           title: "Legal",
           description: "We stay on top of the latest legal requirements.",
-          items: data.legalPages.items.map((post) => ({
+          items: data.legalPages.items.map((post: LegalPostMeta) => ({
             title: post._title,
             href: `/legal/${post._slug}`,
           })),
@@ -83,7 +84,7 @@ export const Footer = () => (
                         ) : (
                           <p className="text-xl">{item.title}</p>
                         )}
-                        {item.items?.map((subItem) => (
+                        {item.items?.map((subItem: { title: string; href: string }) => (
                           <Link
                             className="flex items-center justify-between"
                             href={subItem.href}

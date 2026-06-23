@@ -8,7 +8,7 @@ import {
   securityMiddleware,
 } from "@repo/security/proxy";
 import { createNEMO } from "@rescale/nemo";
-import { type NextProxy, type NextRequest, NextResponse } from "next/server";
+import { type NextFetchEvent, type NextRequest, NextResponse } from "next/server";
 import { env } from "@/env";
 
 export const config = {
@@ -52,7 +52,7 @@ const composedMiddleware = createNEMO(
 );
 
 // Clerk middleware wraps other middleware in its callback
-export default authMiddleware(async (_auth, request, event) => {
+export default authMiddleware(async (_auth: unknown, request: NextRequest, event: NextFetchEvent) => {
   // Run security headers first
   const headersResponse = securityHeaders();
 
@@ -64,4 +64,4 @@ export default authMiddleware(async (_auth, request, event) => {
 
   // Return middleware response if it exists, otherwise headers response
   return middlewareResponse || headersResponse;
-}) as unknown as NextProxy;
+}) as unknown as NextFetchEvent;

@@ -1,3 +1,5 @@
 import { getFlags } from "@repo/feature-flags/access";
 
-export const GET = getFlags;
+export async function GET(request: Request) {
+  return getFlags(request);
+}

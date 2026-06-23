@@ -46,7 +46,16 @@
   },
   "pnpm": {
     "overrides": {
-      "parse5": "^7.2.1"
+      "parse5": "^7.2.1",
+      "next": "16.0.10",
+      "react-dom": "19.2.4",
+      "@babel/core": "7.28.5"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react-dom": "19.2.4",
+        "@babel/core": "7.28.5"
+      }
     }
   },
   "type": "module"
